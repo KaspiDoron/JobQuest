@@ -1,0 +1,789 @@
+<mxfile host="65bd71144e">
+    <diagram id="Zk3o1ert7jQMRY8QYvkC" name="Architecture">
+        <mxGraphModel dx="4557" dy="3889" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-1" value="class App" style="swimlane;fillColor=#D4EBFF;rounded=0;gradientColor=none;swimlaneFillColor=#D4EBFF;strokeWidth=2;strokeColor=#99CCFF;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=20;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="157" width="200" height="373" as="geometry">
+                        <mxRectangle width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-2" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;jobManager &lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(JobManager)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-1">
+                    <mxGeometry x="10" y="52.50831325301206" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-3" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;filterManager&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;(FilterManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;spacingLeft=0;spacingRight=0;spacingBottom=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-1">
+                    <mxGeometry x="10" y="95.99831325301207" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-4" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;uiManager&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;(UIManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-1">
+                    <mxGeometry x="10" y="139.99831325301207" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-5" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;theme&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-1">
+                    <mxGeometry x="10" y="233.99831325301204" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-6" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;errorMessages &lt;/span&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;{}&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-1">
+                    <mxGeometry x="10" y="278.99831325301204" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-7" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;categoryManager&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;(CategoryManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-1">
+                    <mxGeometry x="10" y="184" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-8" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;IDs {}&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-1">
+                    <mxGeometry x="10" y="324.99831325301204" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-9" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D4EBFF;strokeColor=#99CCFF;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="530" width="200" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-10" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="549.998313253012" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-11" value="&lt;span style=&quot;font-size: 14px; font-weight: normal;&quot;&gt;initializeApp() async&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="599.998313253012" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-12" value="&lt;span style=&quot;font-size: 14px; font-weight: 400;&quot;&gt;handleError(errorEvent, code, msg)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="714.99" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-13" value="&lt;span style=&quot;font-size: 14px; font-weight: 400;&quot;&gt;toggleTheme()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="771.988313253012" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-14" value="class JobManager" style="swimlane;fillColor=#FEFFD9;rounded=0;gradientColor=none;swimlaneFillColor=#FEFFD9;strokeWidth=2;strokeColor=#C2B34E;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="157" width="200" height="643" as="geometry">
+                        <mxRectangle width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-15" value="apiEndPoint (string)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="102.45831325301208" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-16" value="app (App)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="52.99831325301207" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-17" value="seenJobs [Job]" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="202.99831325301204" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-18" value="jobs [Job]" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="150.9983132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-19" value="" style="edgeStyle=none;fontFamily=Parkinsans;fontSize=14;fontColor=#000000;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" edge="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="160" y="294.5999999999999" as="targetPoint"/>
+                        <mxPoint x="160" y="294.5999999999999" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-20" value="" style="rounded=0;strokeColor=#C2B34E;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FEFFD9;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry y="263" width="200" height="387" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-21" value="constructor()" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=1" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="285.4383132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-22" value="fetchJobs(source, filterKey,&#10; filterValue, limit = 15) async" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="332" width="180" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-23" value="getSeenJobs()" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="442.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-24" value="saveSeenJobs()" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="492.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-25" value="createApiUrl()" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="393.00831325301215" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-26" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="PUJ2-U9DMKelw8rk8hQW-14" source="PUJ2-U9DMKelw8rk8hQW-25" target="PUJ2-U9DMKelw8rk8hQW-22">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-120" y="292.9949999999999" as="sourcePoint"/>
+                        <mxPoint x="-10" y="363" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-10" y="410"/>
+                            <mxPoint x="-10" y="369"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-27" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="PUJ2-U9DMKelw8rk8hQW-14" source="PUJ2-U9DMKelw8rk8hQW-18" target="PUJ2-U9DMKelw8rk8hQW-22">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-60" y="188.46228915662687" as="sourcePoint"/>
+                        <mxPoint x="-30" y="313" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-10" y="168"/>
+                            <mxPoint x="-10" y="345"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-28" value="toggleJobSeen(job)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="542.9983132530122" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-29" value="handleSeenJob(jobId)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FBFFC4;fontColor=#000000;strokeColor=#C2B34E;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-14">
+                    <mxGeometry x="10" y="592.9983132530122" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-30" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="PUJ2-U9DMKelw8rk8hQW-14" source="PUJ2-U9DMKelw8rk8hQW-29" target="PUJ2-U9DMKelw8rk8hQW-28">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-50" y="670.0022891566268" as="sourcePoint"/>
+                        <mxPoint x="-50" y="623" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-10" y="610"/>
+                            <mxPoint x="-10" y="560"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-31" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="PUJ2-U9DMKelw8rk8hQW-14" source="PUJ2-U9DMKelw8rk8hQW-17" target="PUJ2-U9DMKelw8rk8hQW-23">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-40" y="236.0022891566266" as="sourcePoint"/>
+                        <mxPoint x="-40" y="406.01" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-40" y="220"/>
+                            <mxPoint x="-40" y="469"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-32" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="PUJ2-U9DMKelw8rk8hQW-14" source="PUJ2-U9DMKelw8rk8hQW-17" target="PUJ2-U9DMKelw8rk8hQW-24">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-70" y="277.78228915662663" as="sourcePoint"/>
+                        <mxPoint x="-70" y="631.5092771084337" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-50" y="212"/>
+                            <mxPoint x="-50" y="511"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-33" value="class FilterManager" style="swimlane;fillColor=#EDFFEF;rounded=0;gradientColor=none;swimlaneFillColor=#EDFFEF;strokeWidth=2;strokeColor=#87A887;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="-200" y="157" width="200" height="203" as="geometry">
+                        <mxRectangle width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-34" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;app&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(App)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D4FFD8;fontColor=#000000;strokeColor=#87A887;fontStyle=0" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-33">
+                    <mxGeometry x="10" y="52.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-35" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;favoriteFilters &lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Filter]&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D4FFD8;fontColor=#000000;strokeColor=#87A887;fontStyle=0" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-33">
+                    <mxGeometry x="10" y="102.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-36" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;activeFilters &lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;set[Filter]&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D4FFD8;fontColor=#000000;strokeColor=#87A887;fontStyle=0" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-33">
+                    <mxGeometry x="10" y="152.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-37" value="" style="whiteSpace=wrap;html=1;fontSize=15;fillColor=#EDFFEF;strokeColor=#87A887;fontColor=#1A1A1A;fontStyle=1;startSize=40;rounded=0;gradientColor=none;swimlaneFillColor=#E8F0FF;strokeWidth=2;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="-200" y="360" width="200" height="340" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-38" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D4FFD8;fontColor=#000000;strokeColor=#87A887;" vertex="1" parent="1">
+                    <mxGeometry x="-190" y="378.9783132530122" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-39" value="class Job" style="swimlane;fillColor=#FAFFB0;rounded=0;gradientColor=none;swimlaneFillColor=#FAFFB0;strokeWidth=2;strokeColor=#C2AF34;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="-890" width="200" height="657.56" as="geometry">
+                        <mxRectangle width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-40" value="idJob (string)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="99.99831325301217" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-41" value="title (string)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="149.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-42" value="company (string)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="297.55831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-43" value="location (string)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="347.55831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-44" value="isSeen (boolean)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="397.55831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-45" value="companyLogo (string)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="447.55831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-46" value="postingDate (Date)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="497.55831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-47" value="jobUrl (string)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="200.00831325301215" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-48" value="jobFormat (string)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="250.00831325301215" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-49" value="description (string)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="547.5583132530122" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-50" value="salary (string)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="597.5583132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-51" value="jobManagerIns&#10;(JobManager)" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-39">
+                    <mxGeometry x="10" y="50" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-52" value="" style="edgeStyle=none;fontFamily=Parkinsans;fontSize=14;fontColor=#000000;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="280" y="-200.82999999999993" as="targetPoint"/>
+                        <mxPoint x="280" y="-200.82999999999993" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-53" value="" style="rounded=0;strokeColor=#C2AF34;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FAFFB0;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="-232.43" width="200" height="232.44" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-54" value="constructor()" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="130" y="-209.9916867469879" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-55" value="class Filter" style="swimlane;fillColor=#C4FFCE;rounded=0;gradientColor=none;swimlaneFillColor=#C4FFCE;strokeWidth=2;strokeColor=#65A865;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="-200" y="-360" width="200" height="243.99" as="geometry">
+                        <mxRectangle width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-56" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;idFilter &lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#C4FFCE;fontColor=#000000;strokeColor=#65A865;fontStyle=0" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-55">
+                    <mxGeometry x="10" y="103.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-57" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;key&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#C4FFCE;fontColor=#000000;strokeColor=#65A865;fontStyle=0" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-55">
+                    <mxGeometry x="10" y="149.01831325301217" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-58" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;value&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#C4FFCE;fontColor=#000000;strokeColor=#65A865;fontStyle=0" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-55">
+                    <mxGeometry x="10" y="193.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-59" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;filterManagerIns &lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(FilterManager)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#C4FFCE;fontColor=#000000;strokeColor=#65A865;fontStyle=0" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-55">
+                    <mxGeometry x="10" y="53" width="180" height="37" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-60" value="" style="whiteSpace=wrap;html=1;fontSize=15;fillColor=#C4FFCE;strokeColor=#65A865;fontColor=#1A1A1A;fontStyle=1;startSize=40;rounded=0;gradientColor=none;swimlaneFillColor=#E8F0FF;strokeWidth=2;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="-200" y="-120" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-61" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#C4FFCE;fontColor=#000000;strokeColor=#65A865;" vertex="1" parent="1">
+                    <mxGeometry x="-190" y="-104.00168674698784" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-62" value="class CategoryManager" style="swimlane;fillColor=#D6F7FF;rounded=0;gradientColor=none;swimlaneFillColor=#D6F7FF;strokeWidth=2;strokeColor=#46A5C2;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=15;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="140" width="200" height="260" as="geometry">
+                        <mxRectangle width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-63" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;categories&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Category]&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-62">
+                    <mxGeometry x="10" y="147.9983132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-64" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;apiEndPointChips&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-62">
+                    <mxGeometry x="10" y="99.9983132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-65" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;app&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(App)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-62">
+                    <mxGeometry x="10" y="49.9983132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-66" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;chips&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Chips]&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-62">
+                    <mxGeometry x="10" y="199.9983132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-67" style="edgeStyle=none;html=1;fontFamily=Parkinsans;fontSize=14;fontColor=#000000;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-360" y="424.60000000000036" as="targetPoint"/>
+                        <mxPoint x="-360" y="424.60000000000036" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-68" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#46A5C2;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#D6F7FF;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="393" width="200" height="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-69" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" vertex="1" parent="1">
+                    <mxGeometry x="-510" y="412.4383132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-70" value="class Category" style="swimlane;fillColor=#B8F1FF;rounded=0;gradientColor=none;swimlaneFillColor=#B8F1FF;strokeWidth=2;strokeColor=#2793C2;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="-410" width="200" height="320" as="geometry">
+                        <mxRectangle width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-71" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;idCategory&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-70">
+                    <mxGeometry x="10" y="107.5083132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-72" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;key&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-70">
+                    <mxGeometry x="10" y="157.5083132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-73" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;description&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-70">
+                    <mxGeometry x="10" y="257.5083132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-74" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;categoryManagerIns&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(CategoryManager)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-70">
+                    <mxGeometry x="10" y="57.5083132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-75" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;values&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;[]&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-70">
+                    <mxGeometry x="10" y="207.5083132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-76" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#2793C2;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#B8F1FF;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="-90" width="200" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-77" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="1">
+                    <mxGeometry x="-510" y="-59.28168674698793" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-78" value="class UIManager" style="swimlane;fillColor=#FFEDDE;rounded=0;gradientColor=none;swimlaneFillColor=#FFEDDE;strokeWidth=2;strokeColor=#C98638;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="-1230" width="200" height="509.99" as="geometry">
+                        <mxRectangle width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-79" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;app&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(App)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-78">
+                    <mxGeometry x="10" y="49.998313253011936" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-80" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;searchBar&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-78">
+                    <mxGeometry x="10" y="100.00831325301192" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-81" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;chipsContainer&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-78">
+                    <mxGeometry x="10" y="149.9883132530119" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-82" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;filtersPanel&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-78">
+                    <mxGeometry x="10" y="200.9883132530119" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-83" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;jobsConatiner&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-78">
+                    <mxGeometry x="10" y="249.9883132530119" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-84" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;loadingSkelton&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-78">
+                    <mxGeometry x="10" y="299.98831325301194" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-85" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;favFiltersConatiner&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-78">
+                    <mxGeometry x="10" y="349.98831325301194" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-86" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;seenJobs&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-78">
+                    <mxGeometry x="10" y="399.98831325301194" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-87" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;sortingOptions&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-78">
+                    <mxGeometry x="10" y="449.98831325301194" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-88" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFEDDE;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="-720" width="200" height="720.01" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-89" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-700" width="180" height="36.54" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-90" value="get getJob()" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="-159.9916867469879" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-91" value="renderLogo()" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="-109.99168674698787" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-92" value="getFormattedDate()" style="rounded=0;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FAFFB0;fontColor=#000000;strokeColor=#C2AF34;fontStyle=0;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="-59.001686746987886" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-93" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;getFavFilters()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D4FFD8;fontColor=#000000;strokeColor=#87A887;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="-190" y="425.98831325301217" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-94" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;saveFavFilters()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D4FFD8;fontColor=#000000;strokeColor=#87A887;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="-190" y="474.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-95" value="" style="edgeStyle=none;html=0;fontSize=10;endArrow=none;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-37" target="PUJ2-U9DMKelw8rk8hQW-36">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-100" y="427" as="sourcePoint"/>
+                        <mxPoint x="-100" y="341.9862650602413" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-96" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;get getFilter()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#C4FFCE;fontColor=#000000;strokeColor=#65A865;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="-190" y="-57.551686746987855" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-97" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;renderJobs([Jobs])&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-500.01168674698806" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-98" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;renderChips([chips])&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-450.01168674698806" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-99" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;showLoading()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-350.01168674698806" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-100" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;hideLoading()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-300.01168674698806" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-101" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;displayError(errorEvent)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-600.0116867469881" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-102" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;renderFilters([categories])&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-401.01168674698806" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-103" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;favoriteFiltersUI(favFilter,&amp;nbsp;&lt;br&gt;&lt;/span&gt;addRemove&lt;span style=&quot;font-size: 12px;&quot;&gt;)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-206" width="180" height="43.98" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-104" value="seenJobsUI(seenJob, addRemove)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-154.01" width="180" height="34.44" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-105" value="toggleFiltersPanel(isMobile)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-550.0100000000001" width="180" height="34.44" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-106" value="bindEvents()" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-107.55999999999997" width="180" height="34.44" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-107" value="fetchCategories() async" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="-510" y="506.98831325301217" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-108" value="fetchChips() async" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="-510" y="458.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-109" value="loadingManager&lt;br style=&quot;font-size: 12px;&quot;&gt;(promise)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-250.01" width="180" height="35.01" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-110" value="sortingJobs&lt;br&gt;(filterKey, ace)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" vertex="1" parent="1">
+                    <mxGeometry x="-510" y="553" width="180" height="37.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-111" value="&lt;font face=&quot;Parkinsans&quot; color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;User Enters&lt;/span&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#FFF1BA;strokeColor=#EDBD5C;strokeWidth=3;" vertex="1" parent="1">
+                    <mxGeometry x="773" y="600" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-112" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;endFill=1;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-111" target="PUJ2-U9DMKelw8rk8hQW-11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="810" y="620" as="sourcePoint"/>
+                        <mxPoint x="870" y="706.994117647059" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="760" y="617"/>
+                            <mxPoint x="760" y="626"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-113" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-108" target="PUJ2-U9DMKelw8rk8hQW-11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-80" y="240" as="sourcePoint"/>
+                        <mxPoint x="740" y="910" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-300" y="468"/>
+                            <mxPoint x="-300" y="930"/>
+                            <mxPoint x="690" y="930"/>
+                            <mxPoint x="690" y="635"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-114" value="class Chip" style="swimlane;fillColor=#B8F1FF;rounded=0;gradientColor=none;swimlaneFillColor=#B8F1FF;strokeWidth=2;strokeColor=#2793C2;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="-800" y="0.01" width="200" height="270" as="geometry">
+                        <mxRectangle width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-115" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;idChip&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-114">
+                    <mxGeometry x="10" y="107.5083132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-116" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;name&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-114">
+                    <mxGeometry x="10" y="157.5083132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-117" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;categoryManagerIns&lt;br&gt;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(CategoryManager)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-114">
+                    <mxGeometry x="10" y="57.5083132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-118" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;slug&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(string)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="PUJ2-U9DMKelw8rk8hQW-114">
+                    <mxGeometry x="10" y="207.5083132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-119" style="edgeStyle=none;html=1;fontFamily=Parkinsans;fontSize=14;fontColor=#000000;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;strokeColor=#2793C2;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-640" y="300.09000000000015" as="targetPoint"/>
+                        <mxPoint x="-640" y="300.09000000000015" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-120" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#2793C2;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#B8F1FF;" vertex="1" parent="1">
+                    <mxGeometry x="-800" y="268.49" width="200" height="96.52" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-121" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#B8F1FF;fontColor=#000000;strokeColor=#2793C2;" vertex="1" parent="1">
+                    <mxGeometry x="-790" y="298.4583132530121" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-122" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-107" target="PUJ2-U9DMKelw8rk8hQW-11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-280.0000000000002" y="575.0653012048191" as="sourcePoint"/>
+                        <mxPoint x="719.9999999999995" y="695.3062650602409" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-310" y="516"/>
+                            <mxPoint x="-310" y="940"/>
+                            <mxPoint x="700" y="940"/>
+                            <mxPoint x="700" y="618"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-123" value="extractCleanSalary&lt;br&gt;(salaryString)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" vertex="1" parent="1">
+                    <mxGeometry x="-510" y="603" width="180" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-124" value="randomCategory()" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" vertex="1" parent="1">
+                    <mxGeometry x="-510" y="657.49" width="180" height="35.51" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-125" value="getCategoryValues&lt;br&gt;(filterKey)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" vertex="1" parent="1">
+                    <mxGeometry x="-510" y="704.98" width="180" height="35.51" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-126" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;filterJobsByvValue(jobs, filterKey, filterValue)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D4FFD8;fontColor=#000000;strokeColor=#87A887;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="-190" y="580.51" width="180" height="44.99" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-127" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-126" target="PUJ2-U9DMKelw8rk8hQW-22">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-230" y="510.0653012048195" as="sourcePoint"/>
+                        <mxPoint x="769.9999999999995" y="630.3062650602409" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="100" y="603"/>
+                            <mxPoint x="100" y="514"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-128" value="&lt;span style=&quot;font-size: 14px; font-weight: normal;&quot;&gt;handleSearchingEvent()&lt;br&gt;async&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="652.51" width="180" height="47.49" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-129" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-109" target="PUJ2-U9DMKelw8rk8hQW-11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="820" y="-301.25771084337384" as="sourcePoint"/>
+                        <mxPoint x="820" y="689.995301204819" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="690" y="-232"/>
+                            <mxPoint x="690" y="609"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-130" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;endFill=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-109" target="PUJ2-U9DMKelw8rk8hQW-128">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="700" y="-138.7349999999999" as="sourcePoint"/>
+                        <mxPoint x="700" y="652.505301204819" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="710" y="-241"/>
+                            <mxPoint x="710" y="664"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-131" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-22" target="PUJ2-U9DMKelw8rk8hQW-11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="340" y="522.9849999999999" as="sourcePoint"/>
+                        <mxPoint x="480" y="422.99" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="470" y="502"/>
+                            <mxPoint x="470" y="600"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-132" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-22" target="PUJ2-U9DMKelw8rk8hQW-128">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="679.47" as="sourcePoint"/>
+                        <mxPoint x="510.00000000000136" y="736.968313253012" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="430" y="514"/>
+                            <mxPoint x="430" y="653"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-133" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-101" target="PUJ2-U9DMKelw8rk8hQW-12">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="760" y="-429.99749999999995" as="sourcePoint"/>
+                        <mxPoint x="760" y="760" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="720" y="-583"/>
+                            <mxPoint x="720" y="735"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-134" value="uodateUI(jobs, filters, chips, filter)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-58.729999999999976" width="180" height="34.44" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-135" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-134" target="PUJ2-U9DMKelw8rk8hQW-128">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="-161.25500000000056" as="sourcePoint"/>
+                        <mxPoint x="400" y="679.9953012048195" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="460" y="-41"/>
+                            <mxPoint x="460" y="676"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-136" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;endFill=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-134" target="PUJ2-U9DMKelw8rk8hQW-128">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="454.94" y="-200.45999999999978" as="sourcePoint"/>
+                        <mxPoint x="454.94" y="659.0350000000001" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="450" y="-50"/>
+                            <mxPoint x="450" y="688"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-137" value="findCategory(filterKey)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" vertex="1" parent="1">
+                    <mxGeometry x="-510" y="753" width="180" height="35.51" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-138" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;entryX=0;entryY=1;entryDx=0;entryDy=0;endFill=1;exitX=-0.005;exitY=0.922;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-128" target="PUJ2-U9DMKelw8rk8hQW-106">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="449.98" y="-22.560000000000347" as="sourcePoint"/>
+                        <mxPoint x="449.98" y="715.6875" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="440" y="696"/>
+                            <mxPoint x="440" y="-73"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-139" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-6" target="PUJ2-U9DMKelw8rk8hQW-12">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="720" y="469.9649999999999" as="sourcePoint"/>
+                        <mxPoint x="860" y="322.97" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="730" y="462"/>
+                            <mxPoint x="730" y="745"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-140" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.856;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-100" target="PUJ2-U9DMKelw8rk8hQW-109">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="395" y="-378.7507228915663" as="sourcePoint"/>
+                        <mxPoint x="395" y="-130.00000000000026" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="470" y="-270"/>
+                            <mxPoint x="470" y="-241"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-141" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-99" target="PUJ2-U9DMKelw8rk8hQW-109">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="450" y="-319.96200000000033" as="sourcePoint"/>
+                        <mxPoint x="460" y="-220" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="460" y="-324"/>
+                            <mxPoint x="460" y="-232"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-142" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=1.004;entryY=0.217;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-102" target="PUJ2-U9DMKelw8rk8hQW-134">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="773.0000000000002" y="-323.70072289156604" as="sourcePoint"/>
+                        <mxPoint x="773.0000000000002" y="-232.43500000000012" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="700" y="-375"/>
+                            <mxPoint x="700" y="-51"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-143" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-98" target="PUJ2-U9DMKelw8rk8hQW-134">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="720" y="-419.970722891566" as="sourcePoint"/>
+                        <mxPoint x="720" y="-95.3199999999999" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="730" y="-433"/>
+                            <mxPoint x="730" y="-41"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-144" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1.001;entryY=0.839;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-97" target="PUJ2-U9DMKelw8rk8hQW-134">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="680" y="-422.51771084337315" as="sourcePoint"/>
+                        <mxPoint x="680.9000000000001" y="-36.744880000000194" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="740" y="-482"/>
+                            <mxPoint x="740" y="-30"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-145" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-84" target="PUJ2-U9DMKelw8rk8hQW-99">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="700" y="-870" as="sourcePoint"/>
+                        <mxPoint x="455" y="-458.70500000000055" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="690" y="-921"/>
+                            <mxPoint x="690" y="-341"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-146" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;exitX=0.998;exitY=0.619;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-84" target="PUJ2-U9DMKelw8rk8hQW-99">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="680" y="-871.2646987951807" as="sourcePoint"/>
+                        <mxPoint x="680" y="-331.2646987951812" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="710" y="-909"/>
+                            <mxPoint x="710" y="-324"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-147" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-124" target="PUJ2-U9DMKelw8rk8hQW-11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-220" y="659.9953012048193" as="sourcePoint"/>
+                        <mxPoint x="780" y="714.7522891566266" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-290" y="675"/>
+                            <mxPoint x="-290" y="920"/>
+                            <mxPoint x="470" y="920"/>
+                            <mxPoint x="470" y="618"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-148" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0.996;exitY=0.17;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-123">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-300" y="704.9749999999999" as="sourcePoint"/>
+                        <mxPoint x="-190" y="610" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-190" y="610"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-149" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-46" target="PUJ2-U9DMKelw8rk8hQW-92">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="20" y="-58.97072289156603" as="sourcePoint"/>
+                        <mxPoint x="130" y="-40" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="110" y="-375"/>
+                            <mxPoint x="110" y="-41"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-150" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-45" target="PUJ2-U9DMKelw8rk8hQW-91">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="70" y="-469.997710843373" as="sourcePoint"/>
+                        <mxPoint x="70" y="-136.5577108433734" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="100" y="-425"/>
+                            <mxPoint x="100" y="-92"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-151" value="idManager(target, job)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-650.0016867469881" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-152" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;addActiveFilter(&lt;/span&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;filterKey, filterValue&lt;/span&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=11;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D4FFD8;fontColor=#000000;strokeColor=#87A887;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="-190" y="640" width="180" height="37.99" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-153" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-159" target="PUJ2-U9DMKelw8rk8hQW-106">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-10" y="540.4822891566268" as="sourcePoint"/>
+                        <mxPoint x="430" y="-100" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="20" y="545"/>
+                            <mxPoint x="20" y="120"/>
+                            <mxPoint x="430" y="120"/>
+                            <mxPoint x="430" y="-82"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-154" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-103" target="PUJ2-U9DMKelw8rk8hQW-159">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="490" y="-231.76000000000022" as="sourcePoint"/>
+                        <mxPoint x="-9.2800000000002" y="533.2747710843373" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="410" y="-195"/>
+                            <mxPoint x="410" y="110"/>
+                            <mxPoint x="10" y="110"/>
+                            <mxPoint x="10" y="534"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-155" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-104" target="PUJ2-U9DMKelw8rk8hQW-28">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="450" y="-158.76000000000022" as="sourcePoint"/>
+                        <mxPoint x="360" y="630" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="420" y="-137"/>
+                            <mxPoint x="420" y="125"/>
+                            <mxPoint x="340" y="125"/>
+                            <mxPoint x="340" y="717"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-156" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-90" target="PUJ2-U9DMKelw8rk8hQW-23">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="50" y="-289.21771084337297" as="sourcePoint"/>
+                        <mxPoint x="80" y="380" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="90" y="-143"/>
+                            <mxPoint x="90" y="617"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-157" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-96" target="PUJ2-U9DMKelw8rk8hQW-94">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-260" y="-116.00771084337299" as="sourcePoint"/>
+                        <mxPoint x="-260" y="217.4322891566266" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-220" y="-40"/>
+                            <mxPoint x="-220" y="492"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-158" value="" style="edgeStyle=segmentEdgeStyle;endArrow=diamondThin;html=1;endSize=8;startSize=8;fontFamily=Parkinsans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontSize=14;fontColor=#000000;strokeWidth=2;strokeColor=#000000;rounded=1;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="PUJ2-U9DMKelw8rk8hQW-152" target="PUJ2-U9DMKelw8rk8hQW-128">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="50" y="795.7522891566271" as="sourcePoint"/>
+                        <mxPoint x="400" y="820" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="10" y="660"/>
+                            <mxPoint x="10" y="820"/>
+                            <mxPoint x="430" y="820"/>
+                            <mxPoint x="430" y="664"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-159" value="toggleFavoriteFilter(filterId, filterKey, filterValue)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D4FFD8;fontColor=#000000;strokeColor=#87A887;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="-190" y="523" width="180" height="44.99" as="geometry"/>
+                </mxCell>
+                <mxCell id="PUJ2-U9DMKelw8rk8hQW-160" value="&lt;span style=&quot;font-size: 12px; font-weight: 400;&quot;&gt;clearLocalStorage(target)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#99CCFF;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontColor=#000000;fillColor=#CCE5FF;gradientColor=none;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="490" y="819.998313253012" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="7894RMCGpG4cTbjfQ9Z-" name="FlowChart">
+        <mxGraphModel dx="1415" dy="801" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
