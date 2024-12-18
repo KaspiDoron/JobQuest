@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "prettier-plugin-tailwindcss": "^0.6.9"
+  },
+  "name": "jobquest",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "dependencies": {
+    "prettier": "^3.4.2"
+  },
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./build/css/output.css --watch",
+    "prettier": "npx prettier --write **/*.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
