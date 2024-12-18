@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- META TAGS FOR SEO AND SOCIAL MEDIA OPTIMIZATION -->
+
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="JobQuest - Your ultimate tool for finding and exploring job opportunities with ease. Search for job listings, get details like company and location, and find your perfect role."
+    />
+    <meta
+      name="keywords"
+      content="job search, career, JobQuest, job opportunities, work finder, job listings, job finder, TailwindCSS, vanilla JavaScript"
+    />
+    <meta name="author" content="Doron Kaspi" />
+
+    <!-- Open Graph Tags for Facebook, LinkedIn, Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JobQuest - Find Your Perfect Job" />
+    <meta
+      property="og:description"
+      content="JobQuest is a simple and user-friendly web application to make job searching easier. Built with vanilla JavaScript and TailwindCSS, it offers a seamless experience across devices."
+    />
+    <meta property="og:url" content="https://yourwebsite.com" />
+    <meta
+      property="og:image"
+      content="https://yourwebsite.com/path/to/your-image.jpg"
+    />
+    <meta property="og:site_name" content="JobQuest" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JobQuest - Find Your Perfect Job" />
+    <meta
+      name="twitter:description"
+      content="JobQuest is a web app that makes job searching easier by displaying job listings from an API. It’s responsive, fast, and built using vanilla JavaScript and TailwindCSS."
+    />
+    <meta
+      name="twitter:image"
+      content="https://yourwebsite.com/path/to/your-image.jpg"
+    />
+    <meta name="twitter:creator" content="@KaspiDoron" />
+
+    <!-- Additional Meta Tags for SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://yourwebsite.com" />
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" href="img/pepe-icon.png" />
+    <link rel="icon" href="img/pepe-icon.png" sizes="16x16" />
+    <link rel="icon" href="img/pepe-icon.png" sizes="32x32" />
+    <link
+      rel="apple-touch-icon"
+      href="img/pepe-icon-180x180.png"
+      sizes="180x180"
+    />
+    <link rel="icon" href="img/pepe-icon.png" type="image/png" />
+
+    <!-- Structured Data (JSON-LD for enhanced SEO) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JobQuest",
+        "description": "JobQuest is a simple and user-friendly web application designed to make job searching easier by fetching and displaying job listings from an API.",
+        "url": "https://yourwebsite.com",
+        "image": "https://yourwebsite.com/path/to/your-image.jpg",
+        "author": {
+          "@type": "Person",
+          "name": "Doron Kaspi"
+        },
+        "applicationCategory": "Job Search Application",
+        "keywords": "job search, career, job opportunities, job listings, vanilla JavaScript, TailwindCSS"
+      }
+    </script>
+
+    <!-- FONTS LINKS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cherry+Swash:wght@400;700&family=Karla:ital,wght@0,200..800;1,200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS LINKS -->
+    <link rel="stylesheet" href="css/output.css" />
+
+    <!-- SCRIPT LINKS -->
+    <script defer src="app.js"></script>
+
+    <title>JobQuest &mdash; Find Your Path</title>
+  </head>
+  <body class="font-logo">
+    <div id="overlay" class="hidden w-screen h-screen fixed z-10"></div>
+    <!--  -->
+    <!-- NAVIGATION BAR SECTION -->
+    <!--  -->
+    <section>
+      <nav
+        class="text-sm bg-amber-1 text-amber-11 dark:bg-slate-9 dark:text-slate-4 grid grid-cols-[fit-content(100%)_1fr] place-items-center py-3 px-4 z-30 fixed top-0 left-0 w-full"
+      >
+        <a
+          href="#"
+          id="navbar-logo"
+          class="flex items-center justify-start gap-1 px-3 py-1 hover:dark:bg-slate-11 hover:bg-amber-2 rounded-3xl transition-all duration-fast cursor-pointer hover:shadow-[0_0_0_0.2rem] hover:border-amber-10 dark:hover:border-slate-10 max-laptop:hover:shadow-none z-20"
+        >
+          <img
+            src="img/JobQuest-logo.png"
+            alt="JobQuest-logo"
+            class="w-24 h-auto max-laptop:w-16"
+          />
+          <p
+            class="font-logo text-lg text-amber-10 dark:text-slate-3 font-bold max-laptop:text-base max-laptop:font-bold max-compact:hidden"
+          >
+            JobQuest
+          </p>
+          <p
+            class="font-logo text-lg text-amber-10 dark:text-slate-3 font-bold max-laptop:text-base max-laptop:font-bold hidden max-compact:block"
+          >
+            JQ
+          </p>
+        </a>
+
+        <ul
+          class="flex items-center justify-center justify-self-end gap-4 font-serif3 transition-colors duration-fast"
+        >
+          <li class="z-20">
+            <button
+              href="#"
+              class="px-4 py-2 hover:opacity-80 hover:bg-amber-2 rounded-2xl dark:hover:bg-slate-11 transition-all duration-fast flex items-center justify-center gap-1 focus:shadow-[0_0_0_0.2rem] focus:border-amber-10 dark:focus:border-slate-10 max-laptop:hidden"
+            >
+              <ion-icon class="text-base" name="heart-outline"></ion-icon
+              >Favorite Filters
+            </button>
+          </li>
+
+          <li class="z-20">
+            <button
+              class="px-4 py-2 hover:opacity-80 hover:bg-amber-2 rounded-2xl dark:hover:bg-slate-11 transition-all duration-fast flex items-center justify-center gap-1 focus:shadow-[0_0_0_0.2rem] focus:border-amber-10 dark:focus:border-slate-10 max-laptop:hidden"
+            >
+              <ion-icon class="text-base" name="search-outline"></ion-icon
+              >Accelerate Your Search
+            </button>
+          </li>
+
+          <li class="relative max-laptop:hidden z-20">
+            <div
+              id="dropdown-toggle-navbar"
+              class="group flex items-center justify-center gap-1 cursor-pointer px-4 py-2 hover:opacity-90 hover:bg-amber-2 rounded-2xl dark:hover:bg-slate-11 transition-all duration-fast focus:shadow-[0_0_0_0.2rem] focus:border-amber-10 dark:focus:border-slate-10"
+            >
+              <p>Find Remote Jobs</p>
+              <ion-icon
+                name="chevron-down-outline"
+                id="dropdown-toggle-navbar-icon"
+                class="text-base self-end"
+              ></ion-icon>
+            </div>
+
+            <div
+              id="dropdown-menu-navbar"
+              class="hidden z-40 flex-col bg-slate-1 font-logo text-sm rounded-2xl shadow-[0_0.2rem_0.5rem_0.1rem_rgba(0,0,0,0.2)] absolute content font-lighter translate-y-2 overflow-hidden dark:text-slate-11 text-slate-11 pb-1 pt-2"
+            >
+              <button
+                class="px-5 py-2 hover:bg-slate-3 hover:opacity-80 transition-all duration-fast"
+              >
+                Category
+              </button>
+              <button
+                class="px-5 py-2 hover:bg-slate-3 hover:opacity-80 transition-all duration-fast"
+              >
+                Location
+              </button>
+              <button
+                class="px-5 py-2 hover:bg-slate-3 hover:opacity-80 transition-all duration-fast"
+              >
+                Job Format
+              </button>
+              <button
+                class="text-amber-7 underline underline-offset-4 px-5 py-2 hover:bg-amber-1 hover:opacity-80 transition-all duration-fast"
+              >
+                LinkedIn
+              </button>
+              <button
+                class="px-5 py-2 hover:bg-slate-3 hover:opacity-80 transition-all duration-fast"
+              >
+                Salary
+              </button>
+              <button
+                class="px-5 py-3 m-2 bg-amber-11 text-slate-1 dark:bg-slate-11 hover:bg-amber-9 dark:hover:bg-slate-9 rounded-3xl transition-all duration-fast"
+              >
+                Seen Jobs
+              </button>
+            </div>
+          </li>
+
+          <!-- Toggling Themes-->
+          <li class="z-30">
+            <div
+              id="theme-toggle"
+              class="relative cursor-pointer w-[4.8rem] h-[2.4rem] bg-slate-3 dark:bg-slate-8 rounded-full transition-colors duration-300"
+            >
+              <span
+                class="absolute top-[0.2rem] left-[0.2rem] w-[2rem] h-[2rem] bg-amber-5 dark:bg-slate-5 rounded-full transition-transform duration-500 ease-in-out dark:translate-x-full shadow-md flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-[1.2rem] h-[1.2rem] text-amber-7 dark:opacity-0 opacity-100 transition-opacity"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5l-2 2h4l-2-2zm0 17l2-2H10l2 2zm7-14-2-2v4l2-2zm-7 14c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-[1.2rem] h-[1.2rem] text-slate-4 dark:opacity-100 opacity-0 transition-opacity"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M9.5 4c.56 0 1.1.08 1.62.23C9.56 5.47 9 7.17 9 9c0 3.31 2.69 6 6 6 1.83 0 3.53-.56 4.77-1.5.15.52.23 1.06.23 1.62 0 3.58-2.92 6.5-6.5 6.5-3.58 0-6.5-2.92-6.5-6.5S5.92 4 9.5 4z"
+                  />
+                </svg>
+              </span>
+            </div>
+          </li>
+
+          <!-- Mobile Menu -->
+          <li class="laptop:hidden z-20">
+            <!-- Hamburger Menu -->
+            <div
+              class="block relative group laptop:hidden translate-y-[0.2rem] translate-x-[-0.3rem]"
+              id="mobile-menu-hamburger"
+            >
+              <input
+                type="checkbox"
+                id="mobile-menu"
+                class="absolute opacity-0 z-30 w-[34px] h-[34px] cursor-pointer peer"
+              />
+              <span
+                class="block w-[42px] h-[6px] mb-[5px] relative bg-amber-9 dark:bg-slate-5 rounded-[3px] z-[1] origin-[4px_0px] transition-all duration-normal ease-[cubic-bezier(0.77,0.2,0.05,1.0)] peer-checked:opacity-100 peer-checked:rotate-[40deg] peer-checked:translate-x-[-3px] peer-checked:translate-y-[-1px] peer-checked:bg-amber-11 dark:peer-checked:bg-slate-3"
+              ></span>
+              <span
+                class="block w-[36px] h-[6px] mb-[5px] relative bg-amber-9 dark:bg-slate-5 rounded-[3px] z-[1] origin-[0%_0%] transition-all duration-fast ease-[cubic-bezier(0.77,0.2,0.05,1.0)] peer-checked:opacity-0 peer-checked:rotate-0 peer-checked:scale-[0.2] translate-x-[-6px]"
+              ></span>
+              <span
+                class="block w-[42px] h-[6px] mb-[5px] relative bg-amber-9 dark:bg-slate-5 rounded-[3px] z-[1] origin-[0%_100%] transition-all duration-normal ease-[cubic-bezier(0.77,0.2,0.05,1.0)] peer-checked:rotate-[-40deg] peer-checked:bg-amber-11 dark:peer-checked:bg-slate-3 peer-checked:translate-x-[-0.2rem]"
+              ></span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Links -->
+      <div class="fixed z-20">
+        <div
+          id="mobile-menu-links"
+          class="flex flex-col gap-y-3 items-center justify-start absolute translate-x-[-50rem] bg-amber-1 h-screen left-0 z-20 px-4 pb-6 pt-8 border-r-8 dark:bg-slate-9 bg-opacity-90 laptop:hidden font-serif3 font-light transition-all duration-slow dark:text-slate-3 opacity-90 max-w-sm text-sm whitespace-nowrap"
+        >
+          <button
+            class="px-4 py-2 rounded-2xl dark:hover:bg-slate-11 hover:bg-amber-2 transition-all duration-fast flex gap-2 justify-center items-center"
+          >
+            Favorite Filters
+            <ion-icon class="text-lg" name="heart-half-sharp"></ion-icon>
+          </button>
+
+          <button
+            class="px-4 py-2 rounded-2xl dark:hover:bg-slate-11 hover:bg-amber-2 transition-all duration-fast flex gap-2 justify-center items-center"
+          >
+            Elevate Your Search
+            <ion-icon class="text-lg" name="analytics-sharp"></ion-icon>
+          </button>
+
+          <div
+            id="dropdown-toggle-navbar-mobile"
+            class="px-4 py-2 rounded-2xl dark:hover:bg-slate-11 hover:bg-amber-2 transition-all duration-fast flex gap-2 justify-center items-center cursor-pointer"
+          >
+            <p>Find Remote Jobs</p>
+            <ion-icon
+              name="chevron-down-outline"
+              id="dropdown-toggle-navbar-icon-mobile"
+              class="translate-y-[0.1rem] text-lg"
+            ></ion-icon>
+          </div>
+
+          <!-- Dropdown links -->
+          <div
+            id="dropdown-menu-navbar-mobile"
+            class="opacity-0 transition-all duration-fast ease-in-out flex flex-col gap-1 font-serif1 text-xs"
+          >
+            <button
+              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl"
+            >
+              Category
+            </button>
+            <button
+              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl"
+            >
+              Location
+            </button>
+            <button
+              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl"
+            >
+              Job Format
+            </button>
+            <button
+              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl"
+            >
+              LinkedIn
+            </button>
+            <button
+              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl"
+            >
+              Salary
+            </button>
+            <button
+              class="px-5 py-3 m-2 bg-amber-11 text-slate-1 dark:bg-slate-10 hover:bg-amber-9 dark:hover:bg-slate-11 rounded-3xl transition-all duration-fast"
+            >
+              Seen Jobs
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  -->
+    <!-- SEARCHBAR SECTION -->
+    <!--  -->
+    <section
+      class="bg-amber-1 dark:bg-slate-9 pt-8 shadow-[0_1rem_0.8rem_-1rem_rgba(0,0,0,0.2)] dark:shadow-[0_1rem_2rem_-1rem_rgba(0,0,0,0.8)]"
+    >
+      <!-- Page Center-->
+      <div
+        class="px-2 mobile:px-3 tablet:px-4 laptop:px-6 desktop:px-7 widescreen:px-8 py-3 mobile:py-4 tablet:py-5 laptop:py-6 desktop:py-7 widescreen:py-8"
+      >
+        <!-- Container SECTION -->
+        <div
+          class="grid grid-rows-[fit-content(100%)_1fr] gap-5 laptop:gap-7 content-center justify-items-center font-serif3 dark:text-slate-3 text-amber-11"
+        >
+          <!-- Header -->
+          <header
+            class="flex flex-col compact:gap-2 mobile:gap-4 items-center justify-center max-h-min text-center"
+          >
+            <h2
+              class="font-headerSerif text-sm mobile:text-base laptop:text-lg desktop:text-2xl leading-8 mobile:leading-10 font-normal"
+            >
+              Find your dream remote job without the hassle
+            </h2>
+            <p
+              class="mobile:leading-7 font-lighter desktop:font-lighter text-[1rem] mobile:text-xs desktop:text-sm tracking-wide"
+            >
+              JobQuest is where top talents go to easily access active and fully
+              remote job opportunities from vetted tech companies.
+            </p>
+          </header>
+
+          <!-- Searchbar and Chips -->
+          <div class="flex flex-col gap-4 justify-between">
+            <!-- Searchbar -->
+            <div class="relative drop-shadow-md self-center">
+              <input
+                type="text"
+                id="searchbar"
+                class="mobile:pl-7 pl-6 laptop:w-[60vw] w-[80vw] pr-4 py-4 rounded-3xl border border-slate-4 focus:outline-none focus:ring-8 focus:ring-amber-11 placeholder:font-serif2 mobile:placeholder:text-xs placeholder:text-[1rem] placeholder:text-slate-5 transition-all duration-fast mobile:placeholder:font-lighter focus:ring-opacity-30 caret-amber-11 dark:caret-slate-11 shadow-sm dark:focus:ring-slate-6 font-serif2 mobile:text-xs text-amber-11 dark:text-slate-11 compact:placeholder:text-[1.3rem] compact:placeholder:font-lighter pb-3 mobile:pb-4"
+                placeholder="Search 2,000 Remote Jobs..."
+                required
+              />
+              <ion-icon
+                class="absolute top-1/2 left-2 -translate-y-1/2 mobile:text-xl text-base text-amber-10 dark:text-slate-10 hover:text-amber-11 dark:hover:text-slate-11 cursor-pointer pb-1 transition-all duration-fast"
+                name="search"
+                role="button"
+                id="searchbar-btn"
+              ></ion-icon>
+            </div>
+
+            <!-- Chips Container -->
+            <div
+              id="chips-container"
+              class="flex flex-wrap justify-start gap-2 laptop:w-[60vw] w-[80vw]"
+            ></div>
+
+            <!-- Skelton Chips -->
+            <div
+              id="loading-skelton-chips"
+              class="hidden animate-pulse flex flex-wrap self-center items-center tablet:items-start tablet:self-start gap-3 laptop:w-[60vw] w-[80vw] min-h-fit"
+            >
+              <span
+                class="laptop:px-8 laptop:py-4 px-6 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-7 laptop:py-4 px-5 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-7 laptop:py-4 px-5 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-8 laptop:py-4 px-6 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-5 laptop:py-4 px-3 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-8 laptop:py-4 px-6 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-6 laptop:py-4 px-4 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-8 laptop:py-4 px-6 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-5 laptop:py-4 px-3 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-7 laptop:py-4 px-5 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-8 laptop:py-4 px-6 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-7 laptop:py-4 px-5 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-7 laptop:py-4 px-5 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-8 laptop:py-4 px-6 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-5 laptop:py-4 px-3 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-5 laptop:py-4 px-3 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-8 laptop:py-4 px-6 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-6 laptop:py-4 px-4 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-8 laptop:py-4 px-6 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-7 laptop:py-4 px-5 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+              <span
+                class="laptop:px-7 laptop:py-4 px-5 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  -->
+    <!-- CONTENT SECTION -->
+    <!--  -->
+    <section class="dark:bg-slate-10 dark:text-slate-4">
+      <!-- Page Center-->
+      <div
+        class="px-2 mobile:px-3 tablet:px-4 laptop:px-6 desktop:px-7 widescreen:px-8 py-2 tablet:py-3 laptop:py-4 desktop:py-5 widescreen:py-6"
+      >
+        <!-- Container SECTION -->
+        <div class="grid grid-cols-1 tablet:grid-cols-[25vw_1fr] gap-2">
+          <!-- Filters Panels -->
+          <aside class="hidden tablet:block">
+            <!-- Filter Panel -->
+            <div class="">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi
+              molestias cupiditate nulla dolore illo magni voluptatem. Fugit
+              fugiat recusandae mollitia autem veritatis sequi cum hic provident
+              accusamus? Vero, sed accusantium.
+            </div>
+
+            <!-- Favorite Filter Panel -->
+            <div></div>
+          </aside>
+
+          <!-- Jobs, Companies and Newsletter -->
+          <article class="flex flex-col gap-3" id="jobs-container">
+            <!--  -->
+            <!-- A CARD CONTAINER -->
+            <!--  -->
+            <div
+              class="text-xxs w-full rounded-[10rem] max-h-fit tablet:max-h-8 leading-5 px-6 py-3 border-2 border-slate-3 dark:border-opacity-40 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] flex items-center justify-start"
+            >
+              <!-- Companies -->
+              <div
+                class="flex flex-col gap-2 font-lighter items-center justify-center"
+              >
+                <h4 class="self-start">
+                  Trusted by leading companies who
+                  <span
+                    class="underline underline-offset-2 text-amber-7 cursor-pointer hover:no-underline hover:text-opacity-80 duration-fast transition-all"
+                    >hired on JobQuest.</span
+                  >
+                </h4>
+                <div class="flex gap-4 grayscale">
+                  <img
+                    src="https://logo.uplead.com/amazon.com"
+                    alt="amazon-logo"
+                    class="object-cover w-auto h-5 rounded-full"
+                  />
+                  <img
+                    src="https://logo.uplead.com/adobe.com"
+                    alt="adobe-logo"
+                    class="object-cover w-auto h-5 rounded-full"
+                  />
+                  <img
+                    src="https://logo.uplead.com/facebook.com"
+                    alt="facebook-logo"
+                    class="object-cover w-auto h-5 rounded-full"
+                  />
+                  <img
+                    src="https://logo.uplead.com/figma.com"
+                    alt="figma-logo"
+                    class="object-cover w-auto h-5 rounded-full"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!--  -->
+            <!-- A CARD CONTAINER -->
+            <!--  -->
+            <div
+              class="text-xxs w-full rounded-[10rem] bg-orange-100 dark:bg-gray-700 px-6 py-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit tablet:max-h-8 leading-6 flex items-center justify-start"
+            >
+              <!-- Instructions -->
+              <div class="flex gap-3 items-center justify-start">
+                <img src="/build/img/doge_small.png" alt="dog-icon" />
+                <div class="font-lighter">
+                  <span class="font-bold text-sm">Ready to apply?</span>
+                  <span class="text-amber-7">Click on a job</span>
+                  listing to get started.
+                </div>
+              </div>
+            </div>
+
+            <!--  -->
+            <!-- A CARD CONTAINER -->
+            <!--  -->
+            <div
+              class="job tablet:text-xxs text-[0.9rem] min-w-full rounded-3xl tablet:rounded-[10rem] bg-amber-2 dark:bg-slate-11 px-6 py-3 pl-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit tablet:max-h-8 leading-6 flex items-center justify-center transition-all duration-fast hover:bg-amber-3 dark:hover:bg-slate-9"
+              id=""
+              data-filterkey=""
+              data-filtervalue=""
+            >
+              <!-- Job Container -->
+              <div
+                class="grid tablet:grid-cols-[fit-content(100%)_1fr_fit-content(100%)] grid-cols-[fit-content(100%)_1fr] grid-rows-[1fr_fit-content(100%)] tablet:grid-rows-none items-center min-w-full gap-3 tablet:py-3 gap-y-1 cursor-pointer group"
+                href="https://www.uplead.com/data-api/"
+              >
+                <!-- <a
+                  href="EXAMPLE_LINK"
+                  class="absolute top-0 left-0 w-full h-full z-10"
+                ></a> -->
+                <!-- Logo -->
+                <img
+                  src="/build/img/Test.jpg"
+                  alt="Test"
+                  class="rounded-full h-6 min-w-max"
+                />
+
+                <!-- Attributes and title -->
+                <div
+                  class="flex flex-col justify-center gap-1 tablet:gap-2 font-normal"
+                >
+                  <!-- Company name and title -->
+                  <div
+                    class="flex flex-col tablet:flex-row tablet:items-center tablet:gap-2 text-[0.95rem] tablet:whitespace-nowrap items-start gap-[0.2rem]"
+                  >
+                    <h4>Senior Independent UX/UI Designer</h4>
+                    <h4 class="hidden tablet:block">✦</h4>
+                    <h4 class="opacity-70 text-[0.9rem]">A.Team</h4>
+                  </div>
+
+                  <!-- Attributes in chips -->
+                  <div class="flex flex-wrap justify-start gap-2 text-[1rem]">
+                    <span
+                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
+                      >Salary</span
+                    >
+                    <span
+                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
+                    >
+                      Job Type</span
+                    >
+                    <span
+                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
+                      >Title</span
+                    >
+                  </div>
+                </div>
+
+                <!-- New/Featured(special-label) and on hover "Marked as seen" and "Apply" -->
+                <!-- "Marked as seen" and "Apply" -->
+                <div
+                  class="flex gap-2 items-center justify-center col-[_1_/_3] tablet:col-auto mt-2 tablet:mt-0 tablet:invisible tablet:group-hover:visible"
+                >
+                  <a
+                    href="The Link For the Job"
+                    class="px-2 py-1 tablet:px-3 tablet:py-2 rounded-3xl bg-amber-11 text-slate-1 hover:bg-amber-10 duration-fast transition-all drop-shadow-sm tablet:text-[1rem] hover:ring-4 ring-slate-2 ring-opacity-80"
+                    >Apply</a
+                  >
+                  <ion-icon
+                    name="eye-outline"
+                    class="text-sm hover:scale-125 duration-fast transition-all cursor-pointer"
+                  ></ion-icon>
+                  <!-- <ion-icon name="eye-off-outline"></ion-icon> -->
+                </div>
+              </div>
+            </div>
+
+            <!--  -->
+            <!-- Skelton Loading CONTAINER -->
+            <!--  -->
+            <div
+              id="loading-skelton-jobs"
+              class="hidden animate-pulse flex flex-col gap-3"
+            >
+              <div
+                class="text-xxs w-full rounded-3xl tablet:rounded-[10rem] bg-amber-3 dark:bg-opacity-60 dark:bg-slate-5 px-6 py-3 border-2 border-slate-3 border-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 min-h-11 tablet:min-h-8 leading-6 flex items-center justify-start"
+              ></div>
+              <div
+                class="text-xxs w-full rounded-3xl tablet:rounded-[10rem] bg-amber-3 dark:bg-opacity-60 dark:bg-slate-5 px-6 py-3 border-2 border-slate-3 border-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 min-h-1 tablet:min-h-8 leading-6 flex items-center justify-start"
+              ></div>
+              <div
+                class="text-xxs w-full rounded-3xl tablet:rounded-[10rem] bg-amber-3 dark:bg-opacity-60 dark:bg-slate-5 px-6 py-3 border-2 border-slate-3 border-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 min-h-11 tablet:min-h-8 leading-6 flex items-center justify-start"
+              ></div>
+              <div
+                class="text-xxs w-full rounded-3xl tablet:rounded-[10rem] bg-amber-3 dark:bg-opacity-60 dark:bg-slate-5 px-6 py-3 border-2 border-slate-3 border-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 min-h-11 tablet:min-h-8 leading-6 flex items-center justify-start"
+              ></div>
+              <div
+                class="text-xxs w-full rounded-3xl tablet:rounded-[10rem] bg-amber-3 dark:bg-opacity-60 dark:bg-slate-5 px-6 py-3 border-2 border-slate-3 border-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 min-h-11 tablet:min-h-8 leading-6 flex items-center justify-start"
+              ></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!--  -->
+    <!-- AVOIDING ERRORS -->
+    <!--  -->
+    <div>
+      <section id="jobs-container"></section>
+      <section id="favorite-filters-container"></section>
+      <section class="filter-panel"></section>
+    </div>
+
+    <!-- ION ICONS LINKS -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
