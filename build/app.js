@@ -22,6 +22,12 @@ class App {
     };
   }
 
+  // TODO: 1. Fix the logic for removing displays jobs - problem is in removeActiveFiltersJobs()
+  // TODO: 2. "Jobs to Display" - write the errors for the ui user
+  // TODO: 3. What if the chips is "seen", replace the filtered jobs and randomly create others the logic is the same for the filters. use that
+  // TODO: 4. Attach the seenBtn to the seenBtn logic
+  // TODO:  Start enter error displaying
+
   async initializeApp() {
     try {
       const chipPromise = await this.categoryManager.fetchChips();
@@ -40,7 +46,7 @@ class App {
       this.filterManager.getFavFilters();
 
       const [chips, categories, jobs] =
-        await this.uiManager.loadingManagerInit(promises);
+        await this.uiManager.uiLoading.loadingManagerInit(promises);
 
       this.uiManager.uiTheme.initializeTheme();
       this.uiManager.updateUI(
@@ -56,6 +62,99 @@ class App {
     }
   }
 
+  // async handleSearchingEvent(
+  //   eventTarget,
+  //   source,
+  //   filterKey,
+  //   filterValue,
+  //   id,
+  //   isActive
+  // ) {
+  //   try {
+  //     const filterAlreadyActive = this.filterManager.activeFilters.some(
+  //       (filter) => filter.key === filterKey && filter.value === filterValue
+  //     );
+  //     let jobs;
+
+  //     this.filterManager.toggleActiveFilter(
+  //       source,
+  //       id,
+  //       filterKey,
+  //       filterValue,
+  //       isActive
+  //     );
+
+  //     if (filterAlreadyActive === false) {
+  //       jobs = await this.uiManager.uiLoading.loadingManagerSearch(
+  //         this.jobManager.fetchJobs(
+  //           source,
+  //           filterKey,
+  //           filterValue,
+  //           this.uiManager.uiBinding.jobCount.value
+  //             ? this.uiManager.uiBinding.isJobCountValid(
+  //                 this.uiManager.uiBinding.jobCount.value
+  //               )
+  //             : 15
+  //         )
+  //       );
+  //     } else {
+  //       const jobsDisplayed = this.jobManager.removeActiveFiltersJobs(
+  //         filterKey,
+  //         filterValue
+  //       );
+
+  //       const jobsRandom = await this.uiManager.uiLoading.loadingManagerSearch(
+  //         this.jobManager.fetchJobs(
+  //           source,
+  //           "category",
+  //           this.categoryManager.randomCategory(),
+  //           this.uiManager?.uiBinding.jobCount.value
+  //             ? this.uiManager?.uiBinding.isJobCountValid(
+  //                 this.uiManager?.uiBinding.jobCount.value
+  //               )
+  //             : 15
+  //         )
+  //       );
+
+  //       jobs =
+  //         this.filterManager.activeFilters.length === 0
+  //           ? jobsRandom
+  //           : jobsDisplayed;
+
+  //       console.log("Jobs are:", jobs);
+  //     }
+
+  //     if (this.filterManager.activeFilters.length === 0)
+  //       this.uiManager.updateUI(
+  //         jobs,
+  //         null,
+  //         null,
+  //         null,
+  //         filterKey,
+  //         filterValue,
+  //         "replace"
+  //       );
+  //     else
+  //       this.uiManager.updateUI(
+  //         jobs,
+  //         null,
+  //         null,
+  //         null,
+  //         filterKey,
+  //         filterValue,
+  //         "adding"
+  //       );
+  //     this.uiManager.updateUISelected(eventTarget, source, id, isActive);
+
+  //     this.jobManager.jobsDisplayed.push(...jobs);
+  //     console.log("The Jobs Displayed Are:", this.jobManager.jobsDisplayed);
+  //     console.log("The Active Filter Are:", this.filterManager.activeFilters);
+  //     return jobs;
+  //   } catch (error) {
+  //     this.handleError("handleSearchingEvent", error.code, error.message);
+  //   }
+  // }
+
   async handleSearchingEvent(
     eventTarget,
     source,
@@ -65,31 +164,94 @@ class App {
     isActive
   ) {
     try {
-      const jobs = await this.uiManager.loadingManagerSearch(
-        this.jobManager.fetchJobs(source, filterKey, filterValue)
-      );
-      console.log("search");
-
-      this.uiManager.updateUI(
-        jobs,
-        null,
-        null,
+      this.uiManager.updateUISelected(eventTarget, source, id, isActive);
+      if (this.filterManager.activeFilters.length === 0) {
+        const jobsRandom = await this.uiManager.uiLoading.loadingManagerSearch(
+          this.jobManager.fetchJobs(
+            source,
+            "category",
+            this.categoryManager.randomCategory(),
+            this.uiManager?.uiBinding.jobCount.value
+              ? this.uiManager?.uiBinding.isJobCountValid(
+                  this.uiManager?.uiBinding.jobCount.value
+                )
+              : 15
+          )
+        );
         this.filterManager.toggleActiveFilter(
           source,
           id,
           filterKey,
           filterValue,
           isActive
-        ),
-        filterKey,
-        filterValue
-      );
-      console.log("The Active Filter Are:", this.filterManager.activeFilters);
-      this.uiManager.updateUISelected(eventTarget, source, id, isActive);
+        );
+        this.jobManager.jobsDisplayed.push(...jobsRandom);
+        this.uiManager.updateUI(
+          jobsRandom,
+          null,
+          null,
+          null,
+          filterKey,
+          filterValue,
+          "replace"
+        );
+      } else {
+        const filterAlreadyActive = this.filterManager.activeFilters.some(
+          (filter) => filter.key === filterKey && filter.value === filterValue
+        );
+        if (filterAlreadyActive) {
+          const jobsDisplayed = this.jobManager.removeActiveFiltersJobs(
+            filterKey,
+            filterValue
+          );
+          console.log("Y");
+          this.uiManager.updateUI(
+            jobsDisplayed,
+            null,
+            null,
+            null,
+            filterKey,
+            filterValue,
+            "adding"
+          );
+        } else {
+          const jobs = await this.uiManager.uiLoading.loadingManagerSearch(
+            this.jobManager.fetchJobs(
+              source,
+              filterKey,
+              filterValue,
+              this.uiManager.uiBinding.jobCount.value
+                ? this.uiManager.uiBinding.isJobCountValid(
+                    this.uiManager.uiBinding.jobCount.value
+                  )
+                : 15
+            )
+          );
+          this.jobManager.jobsDisplayed.push(...jobs);
+          this.uiManager.updateUI(
+            jobs,
+            null,
+            null,
+            null,
+            filterKey,
+            filterValue,
+            "adding"
+          );
+        }
 
-      return jobs;
+        this.filterManager.toggleActiveFilter(
+          source,
+          id,
+          filterKey,
+          filterValue,
+          isActive
+        );
+      }
+      console.log("The Jobs Displayed Are:", this.jobManager.jobsDisplayed);
+      console.log("The Active Filter Are:", this.filterManager.activeFilters);
+      return this.jobManager.jobsDisplayed;
     } catch (error) {
-      this.handleError("initialize", error.code, error.message);
+      this.handleError("handleSearchingEvent", error.code, error.message);
     }
   }
 
@@ -120,6 +282,7 @@ class UIManager {
     this.uiTheme = new UITheme(this);
     this.uiBinding = new UIBinding(this);
     this.uiOverlay = new UIOverlay(this);
+    this.uiLoading = new UILoading(this);
   }
 
   idManager(target, jobOrChip) {
@@ -147,53 +310,13 @@ class UIManager {
     return randomId;
   }
 
-  displayError(errorEvent) {}
+  displayError(errorEvent) {
+    switch (errorEvent) {
+      case "displayNumJobs":
+    }
+  }
 
   toggleFiltersPanel(isMobile) {}
-
-  showLoadingInit() {
-    this.uiBinding.loadingSkeltonJobs.classList.remove("hidden");
-    this.uiBinding.loadingSkeltonChips.classList.remove("hidden");
-  }
-
-  hideLoadingInit() {
-    this.uiBinding.loadingSkeltonJobs.classList.add("hidden");
-    this.uiBinding.loadingSkeltonChips.classList.add("hidden");
-  }
-
-  loadingManagerInit(promise) {
-    this.showLoadingInit();
-    return promise
-      .then((result) => {
-        this.hideLoadingInit();
-        return result;
-      })
-      .catch((error) => {
-        this.hideLoadingInit();
-        throw error;
-      });
-  }
-
-  showLoadingSearch() {
-    this.uiBinding.loadingSkeltonJobs.classList.remove("hidden");
-  }
-
-  hideLoadingSearch() {
-    this.uiBinding.loadingSkeltonJobs.classList.add("hidden");
-  }
-
-  loadingManagerSearch(promise) {
-    this.showLoadingSearch();
-    return promise
-      .then((result) => {
-        this.hideLoadingSearch();
-        return result;
-      })
-      .catch((error) => {
-        this.hideLoadingSearch();
-        throw error;
-      });
-  }
 
   favoriteFiltersUI(favFilter, addRemove) {
     switch (addRemove) {
@@ -215,8 +338,23 @@ class UIManager {
     }
   }
 
-  updateUI(jobs, categories, chips, filter, filterKey, filterValue) {
-    jobs ? this.uiRendering.renderJobs(jobs, filterKey, filterValue) : null;
+  updateUI(
+    jobs,
+    categories,
+    chips,
+    filter,
+    filterKey,
+    filterValue,
+    addingOrReplace
+  ) {
+    jobs
+      ? this.uiRendering.renderJobs(
+          jobs,
+          filterKey,
+          filterValue,
+          addingOrReplace
+        )
+      : null;
 
     filter && categories
       ? this.uiRendering.renderFilters(categories, filter)
@@ -251,11 +389,13 @@ class UIRendering {
     this.uiManager = UIManagerIns;
   }
 
-  renderJobs(jobs, filterKey, filterValue) {
-    jobs.forEach((job) => {
-      const [tag1, tag2, tag3, tag4] = job.tags;
+  renderJobs(jobs, filterKey, filterValue, addingOrReplace) {
+    if (addingOrReplace === "replace") {
+      this.uiManager.uiBinding.jobContainer.innerHTML = "";
+      jobs.forEach((job) => {
+        const [tag1, tag2, tag3, tag4] = job.tags;
 
-      const HTML = `
+        const HTML = `
             <div
               class="job tablet:text-xxs text-[0.9rem] min-w-full rounded-3xl tablet:rounded-[10rem] bg-amber-2 dark:bg-slate-11 px-6 py-3 pl-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit tablet:max-h-8 leading-6 flex items-center justify-center transition-all duration-fast hover:bg-amber-3 dark:hover:bg-slate-9"
               id="${job.jobId}"
@@ -264,7 +404,7 @@ class UIRendering {
             >
               <div
                 class="grid tablet:grid-cols-[fit-content(100%)_1fr_fit-content(100%)] grid-cols-[fit-content(100%)_1fr] grid-rows-[1fr_fit-content(100%)] tablet:grid-rows-none items-center min-w-full gap-3 tablet:py-3 gap-y-1 cursor-pointer group"
-                href="${job.jobUrl}"
+                onclick="window.location.href='${job.jobUrl}';"
               >
                 <img
                   src="${job.companyLogo}"
@@ -327,6 +467,7 @@ class UIRendering {
                     >Apply</a
                   >
                   <ion-icon
+                    onclick="buttonAction(event)"
                     name="eye-outline"
                     class="text-sm hover:scale-125 duration-fast transition-all cursor-pointer"
                   ></ion-icon>
@@ -334,8 +475,95 @@ class UIRendering {
               </div>
             </div>
               `;
-      this.uiManager.uiBinding.jobContainer.innerHTML += HTML;
-    });
+        this.uiManager.uiBinding.jobContainer.innerHTML += HTML;
+      });
+    } else {
+      jobs.forEach((job) => {
+        const [tag1, tag2, tag3, tag4] = job.tags;
+
+        const HTML = `
+            <div
+              class="job tablet:text-xxs text-[0.9rem] min-w-full rounded-3xl tablet:rounded-[10rem] bg-amber-2 dark:bg-slate-11 px-6 py-3 pl-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit tablet:max-h-8 leading-6 flex items-center justify-center transition-all duration-fast hover:bg-amber-3 dark:hover:bg-slate-9"
+              id="${job.jobId}"
+              data-filterkey="${filterKey}"
+              data-filtervalue="${filterValue}"
+            >
+              <div
+                class="grid tablet:grid-cols-[fit-content(100%)_1fr_fit-content(100%)] grid-cols-[fit-content(100%)_1fr] grid-rows-[1fr_fit-content(100%)] tablet:grid-rows-none items-center min-w-full gap-3 tablet:py-3 gap-y-1 cursor-pointer group"
+                onclick="window.location.href='${job.jobUrl}';"
+              >
+                <img
+                  src="${job.companyLogo}"
+                  alt=${job.company}"
+                  class="rounded-full h-6 min-w-max"
+                />
+                <div
+                  class="flex flex-col justify-center gap-1 tablet:gap-2 font-normal"
+                >
+                  <div
+                    class="flex flex-col tablet:flex-row tablet:items-center tablet:gap-2 text-[0.95rem] tablet:whitespace-nowrap items-start gap-[0.2rem]"
+                  >
+                    <h4>${job.title}</h4>
+                    <h4 class="hidden tablet:block">✦</h4>
+                    <h4 class="opacity-70 text-[0.9rem]">${job.company}</h4>
+                  </div>
+
+                  <div class="flex flex-wrap justify-start gap-2 text-[1rem]">
+                  <span
+                    class="${job.salary ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
+                    >
+                    ${job.salary || ""}</span>
+                    <span
+                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
+                    >
+                      ${job.jobFormat.replace("_", " ").replace(/\b\w/g, (c) => c.toUpperCase())}</span
+                    >
+                    <span
+                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
+                      >${job.location}</span
+                    >
+                    <span
+                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
+                      >${filterValue.replace(/\b\w/g, (c) => c.toUpperCase())}</span
+                    >
+                  <span
+                    class="${tag1 ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
+                    >
+                    ${tag1?.replace(/\b\w/g, (c) => c.toUpperCase()) || ""}</span>
+                  <span
+                    class="${tag2 ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
+                    >
+                    ${tag2?.replace(/\b\w/g, (c) => c.toUpperCase()) || ""}</span>
+                  <span
+                    class="${tag3 ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
+                    >
+                    ${tag3?.replace(/\b\w/g, (c) => c.toUpperCase()) || ""}</span>
+                  <span
+                    class="${tag4 ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
+                    >
+                    ${tag4?.replace(/\b\w/g, (c) => c.toUpperCase()) || ""}</span>
+                  </div>
+                </div>
+                <div
+                  class="flex gap-2 items-center justify-center col-[_1_/_3] tablet:col-auto mt-2 tablet:mt-0 tablet:invisible tablet:group-hover:visible"
+                >
+                  <a
+                    href="The Link For the Job"
+                    class="px-2 py-1 tablet:px-3 tablet:py-2 rounded-3xl bg-amber-11 text-slate-1 hover:bg-amber-10 duration-fast transition-all drop-shadow-sm tablet:text-[1rem] hover:ring-4 ring-slate-2 ring-opacity-80"
+                    >Apply</a
+                  >
+                  <ion-icon
+                    onclick="buttonAction(event)"
+                    name="eye-outline"
+                    class="text-sm hover:scale-125 duration-fast transition-all cursor-pointer"
+                  ></ion-icon>
+                </div>
+              </div>
+            </div>
+              `;
+        this.uiManager.uiBinding.jobContainer.innerHTML += HTML;
+      });
+    }
   }
 
   renderChips(chips) {
@@ -365,6 +593,8 @@ class UIRendering {
     //
     // Logic for searching and activate searching
     filter;
+
+    // Must contain an ACTIVE class
   }
 }
 
@@ -428,6 +658,7 @@ class UIBinding {
     }
     this.mobileMenuToggle = this.safeQuerySelector("#mobile-menu");
     this.mobileMenuLinks = this.safeQuerySelector("#mobile-menu-links");
+    this.jobCount = this.safeQuerySelector("#job-count");
   }
 
   safeQuerySelector(selector) {
@@ -538,9 +769,21 @@ class UIBinding {
       }
     );
 
+    this.jobCount.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+      }
+    });
+
     this.sortingOptions;
 
     this.loadingSkeltonJobs;
+  }
+
+  isJobCountValid(jobCount) {
+    if (jobCount > 0 && jobCount <= 30) return jobCount;
+    console.log(jobCount);
+    return 15;
   }
 }
 
@@ -571,6 +814,56 @@ class UIOverlay {
       !this.uiManager.uiBinding.safeQuerySelector("#mobile-menu").checked;
   }
 }
+
+class UILoading {
+  constructor(UIManagerIns) {
+    this.uiManager = UIManagerIns;
+  }
+
+  showLoadingInit() {
+    this.uiManager.uiBinding.loadingSkeltonJobs.classList.remove("hidden");
+    this.uiManager.uiBinding.loadingSkeltonChips.classList.remove("hidden");
+  }
+
+  hideLoadingInit() {
+    this.uiManager.uiBinding.loadingSkeltonJobs.classList.add("hidden");
+    this.uiManager.uiBinding.loadingSkeltonChips.classList.add("hidden");
+  }
+
+  loadingManagerInit(promise) {
+    this.showLoadingInit();
+    return promise
+      .then((result) => {
+        this.hideLoadingInit();
+        return result;
+      })
+      .catch((error) => {
+        this.hideLoadingInit();
+        throw error;
+      });
+  }
+
+  showLoadingSearch() {
+    this.uiManager.uiBinding.loadingSkeltonJobs.classList.remove("hidden");
+  }
+
+  hideLoadingSearch() {
+    this.uiManager.uiBinding.loadingSkeltonJobs.classList.add("hidden");
+  }
+
+  loadingManagerSearch(promise) {
+    this.showLoadingSearch();
+    return promise
+      .then((result) => {
+        this.hideLoadingSearch();
+        return result;
+      })
+      .catch((error) => {
+        this.hideLoadingSearch();
+        throw error;
+      });
+  }
+}
 /*****************************************************************************************/
 /*****************************************************************************************/
 /*****************************************************************************************/
@@ -580,10 +873,11 @@ class JobManager {
     this.app = appIns;
     this.apiEndpoint = "https://remotive.com/api/remote-jobs";
     this.jobs = [];
+    this.jobsDisplayed = [];
     this.seenJobs = this.getSeenJobs();
   }
 
-  async fetchJobs(source, filterKey, filterValue, limit = 4) {
+  async fetchJobs(source, filterKey, filterValue, limit = 5) {
     try {
       const apiUrl = this.createApiUrl(filterKey, filterValue);
 
@@ -611,7 +905,9 @@ class JobManager {
           j.publication_date,
           j.description,
           j.salary,
-          j.tags
+          j.tags,
+          filterKey,
+          filterValue
         );
 
         this.jobs.push(job);
@@ -667,7 +963,10 @@ class JobManager {
           jobData.companyLogo,
           jobData.postingDate,
           jobData.description,
-          jobData.salary
+          jobData.salary,
+          jobData.tags,
+          jobData.filterKey,
+          jobData.filterValue
         )
     );
 
@@ -703,6 +1002,37 @@ class JobManager {
     const job = this.jobs.find((j) => j.idJob === jobId);
     job ? this.toggleJobSeen(job) : null;
   }
+
+  removeActiveFiltersJobs(filterKey, filterValue) {
+    const jobsDivs =
+      this.app.uiManager.uiBinding.jobContainer.querySelectorAll("div");
+    console.log(jobsDivs);
+    const removingJobs = [];
+
+    this.jobsDisplayed = this.jobsDisplayed.filter((job) => {
+      const shouldRemove =
+        job.filterKey === filterKey && job.filterValue === filterValue;
+      console.log(shouldRemove);
+      if (shouldRemove) {
+        removingJobs.push(job.idJob);
+      }
+      return !shouldRemove;
+    });
+
+    removingJobs.forEach((jobId) => {
+      jobsDivs.forEach((div) => {
+        if (div.getAttribute("id") === String(jobId)) {
+          div.remove();
+        }
+      });
+    });
+
+    console.log(
+      `Removed jobs with filterKey: "${filterKey}" and filterValue: "${filterValue}"`
+    );
+
+    return this.jobsDisplayed;
+  }
 }
 
 class Job {
@@ -718,7 +1048,9 @@ class Job {
     PostingDate,
     Description,
     Salary,
-    Tags
+    Tags,
+    filterKey,
+    filterValue
   ) {
     this.jobManager = JobManager;
     this.idJob = IdJob;
@@ -732,6 +1064,8 @@ class Job {
     this.salary = this.extractCleanSalary(Salary);
     this.publicationDate = this.getFormattedDate(PostingDate);
     this.tags = Tags;
+    this.filterKey = filterKey;
+    this.filterValue = filterValue;
     this.isSeen = false;
   }
 

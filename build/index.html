@@ -364,7 +364,7 @@
           <!-- Searchbar and Chips -->
           <div class="flex flex-col gap-4 justify-between">
             <!-- Searchbar -->
-            <div class="relative drop-shadow-md self-center">
+            <form class="relative drop-shadow-md self-center">
               <input
                 type="text"
                 id="searchbar"
@@ -378,7 +378,7 @@
                 role="button"
                 id="searchbar-btn"
               ></ion-icon>
-            </div>
+            </form>
 
             <!-- Chips Container -->
             <div
@@ -455,6 +455,19 @@
                 class="laptop:px-7 laptop:py-4 px-5 py-3 rounded-xl dark:bg-slate-10 bg-[#F0E8DB] cursor-pointer transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-11"
               ></span>
             </div>
+
+            <form>
+              <label class="text-xxs">
+                How many jobs to display?
+                <input
+                  id="job-count"
+                  type="number"
+                  placeholder="15"
+                  value="2"
+                  class="ml-2 bg-white border shadow-sm px-2 py-1 border-slate-4 w-7 placeholder-slate-4 text-center rounded-3xl focus:outline-none focus:ring-4 ring-opacity-40 ring-amber-11 dark:ring-slate-3 dark:text-slate-11 pl-4"
+                />
+              </label>
+            </form>
           </div>
         </div>
       </div>
@@ -472,20 +485,24 @@
         <div class="grid grid-cols-1 tablet:grid-cols-[25vw_1fr] gap-2">
           <!-- Filters Panels -->
           <aside class="hidden tablet:block">
-            <!-- Filter Panel -->
-            <div class="">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi
-              molestias cupiditate nulla dolore illo magni voluptatem. Fugit
-              fugiat recusandae mollitia autem veritatis sequi cum hic provident
-              accusamus? Vero, sed accusantium.
-            </div>
+            <div class="flex gap-4 flex-col">
+              <!-- Number of jobs displaying -->
 
-            <!-- Favorite Filter Panel -->
-            <div></div>
+              <!-- Filter Panel -->
+              <div class="">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Commodi molestias cupiditate nulla dolore illo magni voluptatem.
+                Fugit fugiat recusandae mollitia autem veritatis sequi cum hic
+                provident accusamus? Vero, sed accusantium.
+              </div>
+
+              <!-- Favorite Filter Panel -->
+              <div></div>
+            </div>
           </aside>
 
           <!-- Jobs, Companies and Newsletter -->
-          <article class="flex flex-col gap-3" id="jobs-container">
+          <article class="flex flex-col gap-3">
             <!--  -->
             <!-- A CARD CONTAINER -->
             <!--  -->
@@ -545,80 +562,7 @@
               </div>
             </div>
 
-            <!--  -->
-            <!-- A CARD CONTAINER -->
-            <!--  -->
-            <div
-              class="job tablet:text-xxs text-[0.9rem] min-w-full rounded-3xl tablet:rounded-[10rem] bg-amber-2 dark:bg-slate-11 px-6 py-3 pl-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit tablet:max-h-8 leading-6 flex items-center justify-center transition-all duration-fast hover:bg-amber-3 dark:hover:bg-slate-9"
-              id=""
-              data-filterkey=""
-              data-filtervalue=""
-            >
-              <!-- Job Container -->
-              <div
-                class="grid tablet:grid-cols-[fit-content(100%)_1fr_fit-content(100%)] grid-cols-[fit-content(100%)_1fr] grid-rows-[1fr_fit-content(100%)] tablet:grid-rows-none items-center min-w-full gap-3 tablet:py-3 gap-y-1 cursor-pointer group"
-                href="https://www.uplead.com/data-api/"
-              >
-                <!-- <a
-                  href="EXAMPLE_LINK"
-                  class="absolute top-0 left-0 w-full h-full z-10"
-                ></a> -->
-                <!-- Logo -->
-                <img
-                  src="/build/img/Test.jpg"
-                  alt="Test"
-                  class="rounded-full h-6 min-w-max"
-                />
-
-                <!-- Attributes and title -->
-                <div
-                  class="flex flex-col justify-center gap-1 tablet:gap-2 font-normal"
-                >
-                  <!-- Company name and title -->
-                  <div
-                    class="flex flex-col tablet:flex-row tablet:items-center tablet:gap-2 text-[0.95rem] tablet:whitespace-nowrap items-start gap-[0.2rem]"
-                  >
-                    <h4>Senior Independent UX/UI Designer</h4>
-                    <h4 class="hidden tablet:block">✦</h4>
-                    <h4 class="opacity-70 text-[0.9rem]">A.Team</h4>
-                  </div>
-
-                  <!-- Attributes in chips -->
-                  <div class="flex flex-wrap justify-start gap-2 text-[1rem]">
-                    <span
-                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
-                      >Salary</span
-                    >
-                    <span
-                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
-                    >
-                      Job Type</span
-                    >
-                    <span
-                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
-                      >Title</span
-                    >
-                  </div>
-                </div>
-
-                <!-- New/Featured(special-label) and on hover "Marked as seen" and "Apply" -->
-                <!-- "Marked as seen" and "Apply" -->
-                <div
-                  class="flex gap-2 items-center justify-center col-[_1_/_3] tablet:col-auto mt-2 tablet:mt-0 tablet:invisible tablet:group-hover:visible"
-                >
-                  <a
-                    href="The Link For the Job"
-                    class="px-2 py-1 tablet:px-3 tablet:py-2 rounded-3xl bg-amber-11 text-slate-1 hover:bg-amber-10 duration-fast transition-all drop-shadow-sm tablet:text-[1rem] hover:ring-4 ring-slate-2 ring-opacity-80"
-                    >Apply</a
-                  >
-                  <ion-icon
-                    name="eye-outline"
-                    class="text-sm hover:scale-125 duration-fast transition-all cursor-pointer"
-                  ></ion-icon>
-                  <!-- <ion-icon name="eye-off-outline"></ion-icon> -->
-                </div>
-              </div>
-            </div>
+            <div class="flex flex-col gap-3" id="jobs-container"></div>
 
             <!--  -->
             <!-- Skelton Loading CONTAINER -->
@@ -631,7 +575,7 @@
                 class="text-xxs w-full rounded-3xl tablet:rounded-[10rem] bg-amber-3 dark:bg-opacity-60 dark:bg-slate-5 px-6 py-3 border-2 border-slate-3 border-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 min-h-11 tablet:min-h-8 leading-6 flex items-center justify-start"
               ></div>
               <div
-                class="text-xxs w-full rounded-3xl tablet:rounded-[10rem] bg-amber-3 dark:bg-opacity-60 dark:bg-slate-5 px-6 py-3 border-2 border-slate-3 border-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 min-h-1 tablet:min-h-8 leading-6 flex items-center justify-start"
+                class="text-xxs w-full rounded-3xl tablet:rounded-[10rem] bg-amber-3 dark:bg-opacity-60 dark:bg-slate-5 px-6 py-3 border-2 border-slate-3 border-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 min-h-11 tablet:min-h-8 leading-6 flex items-center justify-start"
               ></div>
               <div
                 class="text-xxs w-full rounded-3xl tablet:rounded-[10rem] bg-amber-3 dark:bg-opacity-60 dark:bg-slate-5 px-6 py-3 border-2 border-slate-3 border-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 min-h-11 tablet:min-h-8 leading-6 flex items-center justify-start"

@@ -1,10 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram id="Zk3o1ert7jQMRY8QYvkC" name="Architecture">
-        <mxGraphModel dx="3798" dy="3378" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+        <mxGraphModel dx="1917" dy="1801" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="23" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" vertex="1" parent="1">
+                <mxCell id="23" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" parent="1" vertex="1">
                     <mxGeometry x="760" y="-499.99" width="200" height="260" as="geometry"/>
                 </mxCell>
                 <mxCell id="PUJ2-U9DMKelw8rk8hQW-1" value="class App" style="swimlane;fillColor=#D4EBFF;rounded=0;gradientColor=none;swimlaneFillColor=#D4EBFF;strokeWidth=2;strokeColor=#99CCFF;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=20;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" parent="1" vertex="1">
@@ -281,12 +281,6 @@
                 <mxCell id="PUJ2-U9DMKelw8rk8hQW-96" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;get getFilter()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#C4FFCE;fontColor=#000000;strokeColor=#65A865;fontStyle=0" parent="1" vertex="1">
                     <mxGeometry x="-190" y="-57.551686746987855" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="PUJ2-U9DMKelw8rk8hQW-99" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;showLoading()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
-                    <mxGeometry x="490" y="-370.571686746988" width="180" height="34.98795180722892" as="geometry"/>
-                </mxCell>
-                <mxCell id="PUJ2-U9DMKelw8rk8hQW-100" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;hideLoading()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
-                    <mxGeometry x="490" y="-320.571686746988" width="180" height="34.98795180722892" as="geometry"/>
-                </mxCell>
                 <mxCell id="PUJ2-U9DMKelw8rk8hQW-101" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;displayError(errorEvent)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="490" y="-469.9916867469881" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
@@ -304,9 +298,6 @@
                 </mxCell>
                 <mxCell id="PUJ2-U9DMKelw8rk8hQW-108" value="fetchChips() async" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;fontStyle=0" parent="1" vertex="1">
                     <mxGeometry x="-510" y="458.99831325301216" width="180" height="34.98795180722892" as="geometry"/>
-                </mxCell>
-                <mxCell id="PUJ2-U9DMKelw8rk8hQW-109" value="loadingManager&lt;br style=&quot;font-size: 12px;&quot;&gt;(promise)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
-                    <mxGeometry x="490" y="-270.56999999999994" width="180" height="35.01" as="geometry"/>
                 </mxCell>
                 <mxCell id="PUJ2-U9DMKelw8rk8hQW-110" value="sortingJobs&lt;br&gt;(filterKey, ace)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#D6F7FF;fontColor=#000000;strokeColor=#46A5C2;" parent="1" vertex="1">
                     <mxGeometry x="-510" y="553" width="180" height="37.5" as="geometry"/>
@@ -394,36 +385,36 @@
                 <mxCell id="PUJ2-U9DMKelw8rk8hQW-89" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="490" y="-569.99" width="180" height="36.54" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" value="class UIRendering" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                <mxCell id="11" value="class UIRendering" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" parent="1" vertex="1">
                     <mxGeometry x="760" y="-719.99" width="200" height="220" as="geometry">
                         <mxRectangle width="100" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="31" value="&lt;span style=&quot;&quot;&gt;UIManagerIns&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;span style=&quot;&quot;&gt;(JobManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="11">
+                <mxCell id="31" value="&lt;span style=&quot;&quot;&gt;UIManagerIns&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;span style=&quot;&quot;&gt;(JobManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="11" vertex="1">
                     <mxGeometry x="10" y="49.99831325301193" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="class UITheme" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                <mxCell id="25" value="class UITheme" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" parent="1" vertex="1">
                     <mxGeometry x="1040" y="-719.99" width="200" height="220" as="geometry">
                         <mxRectangle width="100" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="36" value="&lt;span style=&quot;&quot;&gt;UIManagerIns&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;span style=&quot;&quot;&gt;(JobManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="25">
+                <mxCell id="36" value="&lt;span style=&quot;&quot;&gt;UIManagerIns&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;span style=&quot;&quot;&gt;(JobManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="25" vertex="1">
                     <mxGeometry x="10" y="49.99831325301193" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" vertex="1" parent="1">
+                <mxCell id="26" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" parent="1" vertex="1">
                     <mxGeometry x="1040" y="-499.99" width="200" height="260" as="geometry"/>
                 </mxCell>
-                <mxCell id="41" style="edgeStyle=none;html=1;fontSize=17;" edge="1" parent="1" source="27">
+                <mxCell id="41" style="edgeStyle=none;html=1;fontSize=17;" parent="1" source="27" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1430" y="-9.990000000000009" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="27" value="class UIBinding" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                <mxCell id="27" value="class UIBinding" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" parent="1" vertex="1">
                     <mxGeometry x="1320" y="-719.99" width="200" height="860" as="geometry">
                         <mxRectangle width="100" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="42" value="&lt;span style=&quot;&quot;&gt;UIManagerIns&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;span style=&quot;&quot;&gt;(JobManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="27">
+                <mxCell id="42" value="&lt;span style=&quot;&quot;&gt;UIManagerIns&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;span style=&quot;&quot;&gt;(JobManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="27" vertex="1">
                     <mxGeometry x="10" y="49.99831325301193" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
                 <mxCell id="PUJ2-U9DMKelw8rk8hQW-80" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;searchBarBtn&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" parent="27" vertex="1">
@@ -459,22 +450,22 @@
                 <mxCell id="PUJ2-U9DMKelw8rk8hQW-86" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;seenJobsBtn&amp;nbsp;&lt;/span&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" parent="27" vertex="1">
                     <mxGeometry x="10" y="375.99831325301193" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="43" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;dropDownNavBarToggle&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=11;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" vertex="1" parent="27">
+                <mxCell id="43" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;dropDownNavBarToggle&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=11;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" parent="27" vertex="1">
                     <mxGeometry x="10" y="561.9983132530119" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="44" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;dropDownNavBarMenu&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=11;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" vertex="1" parent="27">
+                <mxCell id="44" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;dropDownNavBarMenu&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=11;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" parent="27" vertex="1">
                     <mxGeometry x="10" y="609.9983132530119" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="45" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;overlay&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" vertex="1" parent="27">
+                <mxCell id="45" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;overlay&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" parent="27" vertex="1">
                     <mxGeometry x="10" y="653.9983132530119" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="46" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;mobileMenuToggle&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" vertex="1" parent="27">
+                <mxCell id="46" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;mobileMenuToggle&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" parent="27" vertex="1">
                     <mxGeometry x="10" y="746.9983132530119" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="47" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;mobileMenuLinks&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" vertex="1" parent="27">
+                <mxCell id="47" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;mobileMenuLinks&amp;nbsp;&lt;/font&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(DOM)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;container=0;" parent="27" vertex="1">
                     <mxGeometry x="10" y="790.9983132530119" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" vertex="1" parent="1">
+                <mxCell id="28" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" parent="1" vertex="1">
                     <mxGeometry x="1320" y="140.00999999999996" width="200" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="PUJ2-U9DMKelw8rk8hQW-97" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;renderJobs([Jobs])&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
@@ -486,60 +477,92 @@
                 <mxCell id="PUJ2-U9DMKelw8rk8hQW-102" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;renderFilters([categories], Filter)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="770" y="-340.9916867469881" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="29" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="770" y="-489.99" width="180" height="36.54" as="geometry"/>
                 </mxCell>
-                <mxCell id="32" value="class UISeenFavorite" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                <mxCell id="32" value="class UISeenFavorite" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" parent="1" vertex="1">
                     <mxGeometry x="1600" y="-719.99" width="200" height="220" as="geometry">
                         <mxRectangle width="100" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="33" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" vertex="1" parent="1">
+                <mxCell id="33" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" parent="1" vertex="1">
                     <mxGeometry x="1600" y="-499.99" width="200" height="260" as="geometry"/>
                 </mxCell>
-                <mxCell id="34" value="class UIOverlay" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                <mxCell id="34" value="class UIOverlay" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" parent="1" vertex="1">
                     <mxGeometry x="1040" y="-199.99" width="200" height="220" as="geometry">
                         <mxRectangle width="100" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="35" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" vertex="1" parent="1">
+                <mxCell id="35" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" parent="1" vertex="1">
                     <mxGeometry x="1040" y="20.009999999999962" width="200" height="260" as="geometry"/>
                 </mxCell>
-                <mxCell id="37" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;initializeTheme()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="37" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;initializeTheme()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1048.5" y="-439.9916867469881" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;toggleTheme()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="38" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;toggleTheme()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1048.5" y="-389.9916867469881" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="39" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1050" y="-489.99" width="180" height="36.54" as="geometry"/>
                 </mxCell>
-                <mxCell id="48" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;safeQuerySelector(selector)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="48" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;safeQuerySelector(selector)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1330" y="215.00831325301183" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="49" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;bindEvents()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="49" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;bindEvents()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1330" y="321.9983132530118" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="50" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="50" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1330" y="164.4399999999999" width="180" height="36.54" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;safeQuerySelectorAll&lt;br&gt;(selector)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="52" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;safeQuerySelectorAll&lt;br&gt;(selector)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1330" y="263.01" width="180" height="44" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" value="&lt;span style=&quot;&quot;&gt;UIManagerIns&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;span style=&quot;&quot;&gt;(JobManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="53" value="&lt;span style=&quot;&quot;&gt;UIManagerIns&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;span style=&quot;&quot;&gt;(JobManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1050" y="-142.55168674698803" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="54" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;addOverlay()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="54" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;addOverlay()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1048.5" y="87.44831325301195" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="55" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;removeOverlay()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="55" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;removeOverlay()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1048.5" y="137.44831325301195" width="180" height="34.98795180722892" as="geometry"/>
                 </mxCell>
-                <mxCell id="56" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="56" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1050" y="37.45000000000002" width="180" height="36.54" as="geometry"/>
                 </mxCell>
-                <mxCell id="57" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;overlayControl()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                <mxCell id="57" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;overlayControl()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" parent="1" vertex="1">
                     <mxGeometry x="1048.5" y="188.00831325301195" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#C98638;strokeWidth=2;fontSize=12;fontColor=#000000;fillColor=#FFE0BD;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="20.01" width="200" height="459.99" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="class UIRendering" style="swimlane;fillColor=#FFE0BD;rounded=0;gradientColor=none;swimlaneFillColor=#FFE0BD;strokeWidth=2;strokeColor=#BA7A1A;fontFamily=Parkinsans;fontColor=#1A1A1A;fontSize=17;fontStyle=1;startSize=40;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="-199.99" width="200" height="220" as="geometry">
+                        <mxRectangle width="100" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="60" value="&lt;span style=&quot;&quot;&gt;UIManagerIns&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;&lt;span style=&quot;&quot;&gt;(JobManager)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="59">
+                    <mxGeometry x="10" y="49.99831325301193" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="&lt;span style=&quot;font-size: 14px; font-weight: 700;&quot;&gt;constructor()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="30.00999999999999" width="180" height="36.54" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;showLoadingSearch()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="82.50831325301198" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;hideLoadingSearch()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="132.50831325301198" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="loadingManagerSearch&lt;br style=&quot;font-size: 12px;&quot;&gt;(promise)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="182.51000000000005" width="180" height="35.01" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;showLoadingInit()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="229.998313253012" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;hideLoadingInit()&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="279.998313253012" width="180" height="34.98795180722892" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="loadingManagerInit&lt;br style=&quot;font-size: 12px;&quot;&gt;(promise)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontFamily=Parkinsans;fontSize=12;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DParkinsans;fillColor=#FFE3BF;fontColor=#000000;strokeColor=#C98638;" vertex="1" parent="1">
+                    <mxGeometry x="770" y="330.00000000000006" width="180" height="35.01" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
