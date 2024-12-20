@@ -92,7 +92,7 @@
     <link rel="stylesheet" href="css/output.css" />
 
     <!-- SCRIPT LINKS -->
-    <script defer src="app.js"></script>
+    <script defer src="application.js"></script>
 
     <title>JobQuest &mdash; Find Your Path</title>
   </head>
@@ -368,15 +368,17 @@
               <input
                 type="text"
                 id="searchbar"
-                class="mobile:pl-7 pl-6 laptop:w-[60vw] w-[80vw] pr-4 py-4 rounded-3xl border border-slate-4 focus:outline-none focus:ring-8 focus:ring-amber-11 placeholder:font-serif2 mobile:placeholder:text-xs placeholder:text-[1rem] placeholder:text-slate-5 transition-all duration-fast mobile:placeholder:font-lighter focus:ring-opacity-30 caret-amber-11 dark:caret-slate-11 shadow-sm dark:focus:ring-slate-6 font-serif2 mobile:text-xs text-amber-11 dark:text-slate-11 compact:placeholder:text-[1.3rem] compact:placeholder:font-lighter pb-3 mobile:pb-4"
+                class="mobile:pl-7 pl-6 laptop:w-[60vw] w-[80vw] pr-4 py-4 rounded-3xl border border-slate-4 focus:outline-none focus:ring-8 focus:ring-amber-11 placeholder:font-serif2 mobile:placeholder:text-xs placeholder:text-[1rem] placeholder:text-slate-5 transition-all duration-fast mobile:placeholder:font-lighter focus:ring-opacity-30 caret-amber-11 dark:caret-slate-11 shadow-sm dark:focus:ring-slate-6 font-serif2 compact:text-sm text-amber-11 dark:text-slate-11 compact:placeholder:text-[1.3rem] compact:placeholder:font-lighter pb-3 mobile:pb-4 flex items-center"
                 placeholder="Search 2,000 Remote Jobs..."
                 required
+                autocomplete="off"
               />
               <ion-icon
-                class="absolute top-1/2 left-2 -translate-y-1/2 mobile:text-xl text-base text-amber-10 dark:text-slate-10 hover:text-amber-11 dark:hover:text-slate-11 cursor-pointer pb-1 transition-all duration-fast"
+                class="absolute top-1/2 left-2 -translate-y-1/2 mobile:text-xl text-base text-amber-10 dark:text-slate-10 hover:text-amber-11 dark:hover:text-slate-11 cursor-pointer mobile:pb-1 transition-all duration-fast"
                 name="search"
                 role="button"
                 id="searchbar-btn"
+                onclick="document.getElementById('searchbar').focus();"
               ></ion-icon>
             </form>
 
@@ -466,6 +468,12 @@
                   value="2"
                   class="ml-2 bg-white border shadow-sm px-2 py-1 border-slate-4 w-7 placeholder-slate-4 text-center rounded-3xl focus:outline-none focus:ring-4 ring-opacity-40 ring-amber-11 dark:ring-slate-3 dark:text-slate-11 pl-4"
                 />
+                <p
+                  class="mt-3 hidden text-rose-700 hover:text-rose-800 dark:text-pink-700 dark:hover:text-pink-800 duration-fast transition-all"
+                  id="job-count-alert"
+                >
+                  This is an alert
+                </p>
               </label>
             </form>
           </div>
@@ -562,8 +570,6 @@
               </div>
             </div>
 
-            <div class="flex flex-col gap-3" id="jobs-container"></div>
-
             <!--  -->
             <!-- Skelton Loading CONTAINER -->
             <!--  -->
@@ -587,6 +593,8 @@
                 class="text-xxs w-full rounded-3xl tablet:rounded-[10rem] bg-amber-3 dark:bg-opacity-60 dark:bg-slate-5 px-6 py-3 border-2 border-slate-3 border-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 min-h-11 tablet:min-h-8 leading-6 flex items-center justify-start"
               ></div>
             </div>
+
+            <div class="flex flex-col gap-3" id="jobs-container"></div>
           </article>
         </div>
       </div>
@@ -596,9 +604,7 @@
     <!-- AVOIDING ERRORS -->
     <!--  -->
     <div>
-      <section id="jobs-container"></section>
       <section id="favorite-filters-container"></section>
-      <section class="filter-panel"></section>
     </div>
 
     <!-- ION ICONS LINKS -->

@@ -9,10 +9,58 @@ class App {
     this.categoryManager = new CategoryManager(this);
     this.filterManager = new FilterManager(this);
     this.errorMessages = {
-      initialize: "Failed to load page, try refreshing it.",
-      gettingSeenJobs: "Failed to load seen jobs, try refreshing it.",
-      fetchingChips: "Failed to fetch chips, try refreshing it.",
-      fetchingCategories: "Failed to fetch categories, try refreshing it.",
+      // Job-related errors
+      fetchingJobs: {
+        type: "jobs",
+        message: "Unable to load jobs. Please try refreshing the page.",
+      },
+      jobCountInvalid: {
+        type: "jobCount",
+        message: "Please enter a number between 1 and 30",
+      },
+
+      // Search-related errors
+      searchBarError: {
+        type: "searchBar",
+        message: "No matchings found. Try other keywords.",
+      },
+
+      // Chip-related errors
+      fetchingChips: {
+        type: "chips",
+        message: "Unable to load categories. Please try refreshing.",
+      },
+
+      // Filter-related errors
+      fetchingCategories: {
+        type: "filters",
+        message: "Unable to load filters. Please try refreshing.",
+      },
+
+      // General page errors
+      initialize: {
+        type: "page",
+        message: "Something went wrong. Please refresh the page.",
+      },
+      handleSearchingEvent: {
+        type: "page",
+        message: "Something went wrong. Please refresh the page.",
+      },
+
+      // Storage-related errors
+      gettingSeenJobs: {
+        type: "storage",
+        message: "Unable to load your seen jobs.",
+      },
+      gettingFavorites: {
+        type: "storage",
+        message: "Unable to load your favorite filters.",
+      },
+      // Add new error type for advanced search
+      searchNotFound: {
+        type: "searchBar",
+        message: "No results found. Try different keywords.",
+      },
     };
     this.IDs = {
       job: [],
@@ -22,10 +70,9 @@ class App {
     };
   }
 
-  // TODO: 1. Fix the logic for removing displays jobs - problem is in removeActiveFiltersJobs()
-  // TODO: 2. "Jobs to Display" - write the errors for the ui user
-  // TODO: 3. What if the chips is "seen", replace the filtered jobs and randomly create others the logic is the same for the filters. use that
-  // TODO: 4. Attach the seenBtn to the seenBtn logic
+  // TODO: 1. Fix the logic for removing displays jobs when the filter is removed
+  // TODO: 2. "Number of Jobs to Display" - write the errors for the ui user
+  // TODO: 3. Attach the seenBtn to the seenBtn logic and the favBtn to the favBtn logic
   // TODO:  Start enter error displaying
 
   async initializeApp() {
@@ -42,11 +89,13 @@ class App {
       ]);
 
       this.jobManager.getSeenJobs();
-
       this.filterManager.getFavFilters();
 
       const [chips, categories, jobs] =
         await this.uiManager.uiLoading.loadingManagerInit(promises);
+
+      this.jobManager.jobsDisplayed = jobs;
+      console.log("The Jobs Displayed Are:", this.jobManager.jobsDisplayed);
 
       this.uiManager.uiTheme.initializeTheme();
       this.uiManager.updateUI(
@@ -62,132 +111,21 @@ class App {
     }
   }
 
-  // async handleSearchingEvent(
-  //   eventTarget,
-  //   source,
-  //   filterKey,
-  //   filterValue,
-  //   id,
-  //   isActive
-  // ) {
-  //   try {
-  //     const filterAlreadyActive = this.filterManager.activeFilters.some(
-  //       (filter) => filter.key === filterKey && filter.value === filterValue
-  //     );
-  //     let jobs;
-
-  //     this.filterManager.toggleActiveFilter(
-  //       source,
-  //       id,
-  //       filterKey,
-  //       filterValue,
-  //       isActive
-  //     );
-
-  //     if (filterAlreadyActive === false) {
-  //       jobs = await this.uiManager.uiLoading.loadingManagerSearch(
-  //         this.jobManager.fetchJobs(
-  //           source,
-  //           filterKey,
-  //           filterValue,
-  //           this.uiManager.uiBinding.jobCount.value
-  //             ? this.uiManager.uiBinding.isJobCountValid(
-  //                 this.uiManager.uiBinding.jobCount.value
-  //               )
-  //             : 15
-  //         )
-  //       );
-  //     } else {
-  //       const jobsDisplayed = this.jobManager.removeActiveFiltersJobs(
-  //         filterKey,
-  //         filterValue
-  //       );
-
-  //       const jobsRandom = await this.uiManager.uiLoading.loadingManagerSearch(
-  //         this.jobManager.fetchJobs(
-  //           source,
-  //           "category",
-  //           this.categoryManager.randomCategory(),
-  //           this.uiManager?.uiBinding.jobCount.value
-  //             ? this.uiManager?.uiBinding.isJobCountValid(
-  //                 this.uiManager?.uiBinding.jobCount.value
-  //               )
-  //             : 15
-  //         )
-  //       );
-
-  //       jobs =
-  //         this.filterManager.activeFilters.length === 0
-  //           ? jobsRandom
-  //           : jobsDisplayed;
-
-  //       console.log("Jobs are:", jobs);
-  //     }
-
-  //     if (this.filterManager.activeFilters.length === 0)
-  //       this.uiManager.updateUI(
-  //         jobs,
-  //         null,
-  //         null,
-  //         null,
-  //         filterKey,
-  //         filterValue,
-  //         "replace"
-  //       );
-  //     else
-  //       this.uiManager.updateUI(
-  //         jobs,
-  //         null,
-  //         null,
-  //         null,
-  //         filterKey,
-  //         filterValue,
-  //         "adding"
-  //       );
-  //     this.uiManager.updateUISelected(eventTarget, source, id, isActive);
-
-  //     this.jobManager.jobsDisplayed.push(...jobs);
-  //     console.log("The Jobs Displayed Are:", this.jobManager.jobsDisplayed);
-  //     console.log("The Active Filter Are:", this.filterManager.activeFilters);
-  //     return jobs;
-  //   } catch (error) {
-  //     this.handleError("handleSearchingEvent", error.code, error.message);
-  //   }
-  // }
-
   async handleSearchingEvent(
     eventTarget,
     source,
     filterKey,
     filterValue,
     id,
-    isActive
+    isActive,
+    directJobs = null
   ) {
     try {
-      this.uiManager.updateUISelected(eventTarget, source, id, isActive);
-      if (this.filterManager.activeFilters.length === 0) {
-        const jobsRandom = await this.uiManager.uiLoading.loadingManagerSearch(
-          this.jobManager.fetchJobs(
-            source,
-            "category",
-            this.categoryManager.randomCategory(),
-            this.uiManager?.uiBinding.jobCount.value
-              ? this.uiManager?.uiBinding.isJobCountValid(
-                  this.uiManager?.uiBinding.jobCount.value
-                )
-              : 15
-          )
-        );
-        this.filterManager.toggleActiveFilter(
-          source,
-          id,
-          filterKey,
-          filterValue,
-          isActive
-        );
-        this.jobManager.jobsDisplayed.push(...jobsRandom);
+      if (directJobs) {
+        // Handle direct jobs case
+        this.jobManager.jobsDisplayed = directJobs;
         this.uiManager.updateUI(
-          jobsRandom,
+          directJobs,
           null,
           null,
           null,
@@ -195,74 +133,179 @@ class App {
           filterValue,
           "replace"
         );
-      } else {
-        const filterAlreadyActive = this.filterManager.activeFilters.some(
-          (filter) => filter.key === filterKey && filter.value === filterValue
-        );
-        if (filterAlreadyActive) {
-          const jobsDisplayed = this.jobManager.removeActiveFiltersJobs(
-            filterKey,
-            filterValue
-          );
-          console.log("Y");
-          this.uiManager.updateUI(
-            jobsDisplayed,
-            null,
-            null,
-            null,
-            filterKey,
-            filterValue,
-            "adding"
-          );
-        } else {
-          const jobs = await this.uiManager.uiLoading.loadingManagerSearch(
-            this.jobManager.fetchJobs(
-              source,
-              filterKey,
-              filterValue,
-              this.uiManager.uiBinding.jobCount.value
-                ? this.uiManager.uiBinding.isJobCountValid(
-                    this.uiManager.uiBinding.jobCount.value
-                  )
-                : 15
-            )
-          );
-          this.jobManager.jobsDisplayed.push(...jobs);
-          this.uiManager.updateUI(
-            jobs,
-            null,
-            null,
-            null,
-            filterKey,
-            filterValue,
-            "adding"
-          );
-        }
+        return directJobs;
+      }
+      this.uiManager.updateUISelected(eventTarget, source, id, isActive);
+      const filterAlreadyActive = this.filterManager.activeFilters.some(
+        (filter) => filter.key === filterKey && filter.value === filterValue
+      );
+      console.log("Filter Already Active:", this.filterManager.activeFilters);
 
-        this.filterManager.toggleActiveFilter(
+      if (this.filterManager.activeFilters.length === 0) {
+        await this.handleNoActiveFilters(
           source,
-          id,
           filterKey,
           filterValue,
+          id,
+          isActive
+        );
+      } else if (
+        this.filterManager.activeFilters.length === 1 &&
+        filterAlreadyActive
+      ) {
+        await this.handleSingleActiveFilter(
+          source,
+          filterKey,
+          filterValue,
+          id,
+          isActive
+        );
+      } else if (filterAlreadyActive) {
+        await this.handleRemoveActiveFilter(
+          source,
+          filterKey,
+          filterValue,
+          id,
+          isActive
+        );
+      } else {
+        await this.handleAddNewFilter(
+          source,
+          filterKey,
+          filterValue,
+          id,
           isActive
         );
       }
+
       console.log("The Jobs Displayed Are:", this.jobManager.jobsDisplayed);
       console.log("The Active Filter Are:", this.filterManager.activeFilters);
+      console.log(Object.keys(this.filterManager.activeFilters));
+
       return this.jobManager.jobsDisplayed;
     } catch (error) {
       this.handleError("handleSearchingEvent", error.code, error.message);
     }
   }
 
-  handleError(errorEvent, code, msg) {
-    console.error(
-      `Error occurred, event: ${errorEvent}  , message: ${msg}, code: ${code}`
+  async handleNoActiveFilters(source, filterKey, filterValue, id, isActive) {
+    this.jobManager.jobsDisplayed = [];
+    const jobs = await this.fetchAndDisplayJobs(source, filterKey, filterValue);
+    this.filterManager.toggleActiveFilter(
+      source,
+      id,
+      filterKey,
+      filterValue,
+      isActive
     );
+    this.jobManager.jobsDisplayed.push(...jobs);
+    console.log("The Jobs Displayed Are:", this.jobManager.jobsDisplayed);
+    this.uiManager.updateUI(
+      jobs,
+      null,
+      null,
+      null,
+      filterKey,
+      filterValue,
+      "replace"
+    );
+  }
 
-    const message =
-      this.errorMessages[errorEvent] || "An unknown error occurred.";
-    this.uiManager.displayError(message);
+  async handleSingleActiveFilter(source, filterKey, filterValue, id, isActive) {
+    this.jobManager.jobsDisplayed = [];
+    const jobsRandom = await this.fetchAndDisplayJobs(
+      source,
+      "category",
+      this.categoryManager.randomCategory()
+    );
+    this.filterManager.toggleActiveFilter(
+      source,
+      id,
+      filterKey,
+      filterValue,
+      isActive
+    );
+    this.uiManager.updateUI(
+      jobsRandom,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "replace"
+    );
+  }
+
+  async handleRemoveActiveFilter(source, filterKey, filterValue, id, isActive) {
+    const displayedJobs = this.jobManager.removeActiveFiltersJobs(
+      filterKey,
+      filterValue
+    );
+    this.filterManager.toggleActiveFilter(
+      source,
+      id,
+      filterKey,
+      filterValue,
+      isActive
+    );
+    this.uiManager.updateUI(
+      displayedJobs,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "display"
+    );
+  }
+
+  async handleAddNewFilter(source, filterKey, filterValue, id, isActive) {
+    const jobs = await this.fetchAndDisplayJobs(source, filterKey, filterValue);
+    this.jobManager.jobsDisplayed.push(...jobs);
+    this.uiManager.updateUI(
+      jobs,
+      null,
+      null,
+      null,
+      filterKey,
+      filterValue,
+      "adding"
+    );
+    this.filterManager.toggleActiveFilter(
+      source,
+      id,
+      filterKey,
+      filterValue,
+      isActive
+    );
+  }
+
+  async fetchAndDisplayJobs(source, filterKey, filterValue) {
+    return await this.uiManager.uiLoading.loadingManagerSearch(
+      this.jobManager.fetchJobs(
+        source,
+        filterKey,
+        filterValue,
+        this.uiManager.uiBinding.jobCount.value
+          ? this.uiManager.uiBinding.isJobCountValid(
+              this.uiManager.uiBinding.jobCount.value
+            )
+          : 15
+      )
+    );
+  }
+
+  handleError(errorEvent, code, msg) {
+    console.error(`Error: ${errorEvent}, Code: ${code}, Message: ${msg}`);
+
+    const errorConfig = this.errorMessages[errorEvent];
+    if (!errorConfig) {
+      console.warn("Unknown error type:", errorEvent);
+      return;
+    }
+
+    this.uiManager.displayError(errorEvent, errorConfig);
+    console.log("Error Config, Error Event:", errorConfig, errorEvent);
   }
 
   clearLocalStorage(target) {
@@ -277,12 +320,11 @@ class App {
 class UIManager {
   constructor(appIns) {
     this.app = appIns;
-
     this.uiRendering = new UIRendering(this);
-    this.uiTheme = new UITheme(this);
     this.uiBinding = new UIBinding(this);
     this.uiOverlay = new UIOverlay(this);
     this.uiLoading = new UILoading(this);
+    this.uiTheme = new UITheme(this);
   }
 
   idManager(target, jobOrChip) {
@@ -310,13 +352,109 @@ class UIManager {
     return randomId;
   }
 
-  displayError(errorEvent) {
-    switch (errorEvent) {
-      case "displayNumJobs":
+  displayError(errorEvent, errorConfig) {
+    switch (errorConfig.type) {
+      case "jobs":
+        this.uiBinding.jobContainer.innerHTML = `
+          <div class="w-full rounded-3xl bg-amber-2 dark:bg-slate-11 p-6 text-center">
+            <div class="flex flex-col items-center gap-3">
+              <ion-icon name="alert-circle-outline" class="text-4xl text-rose-500 dark:text-pink-500"></ion-icon>
+              <p class="text-sm font-serif3 text-rose-700 dark:text-pink-400">${errorConfig.message}</p>
+              <button onclick="window.location.reload()" class="mt-2 px-4 py-2 text-xs bg-amber-11 text-slate-1 rounded-full hover:bg-amber-10 transition-colors duration-fast">
+                Refresh Page
+              </button>
+            </div>
+          </div>`;
+        break;
+
+      case "searchBar":
+        console.log("The Error Config is:", errorConfig);
+
+        const searchBar = this.uiBinding.searchBarSearch;
+        console.log("The Search Bar is:", searchBar);
+
+        searchBar.classList.add(
+          "ring-8",
+          "ring-rose-500",
+          "text-rose-500",
+          "dark:ring-pink-500",
+          "dark:text-pink-500",
+          "text-[1rem]",
+          "text-lighter",
+          "focus:ring-8",
+          "focus:ring-rose-500",
+          "focus:text-rose-500",
+          "focus:dark:ring-pink-500",
+          "focus:dark:text-pink-500",
+          "focus:text-[1rem]",
+          "focus:text-lighter"
+        );
+        searchBar.value = errorConfig.message;
+        setTimeout(() => {
+          searchBar.classList.remove(
+            "ring-8",
+            "ring-rose-500",
+            "text-rose-500",
+            "dark:ring-pink-500",
+            "dark:text-pink-500",
+            "text-[1rem]",
+            "text-lighter",
+            "focus:ring-8",
+            "focus:ring-rose-500",
+            "focus:text-rose-500",
+            "focus:dark:ring-pink-500",
+            "focus:dark:text-pink-500",
+            "focus:-[1rem]",
+            "focus:text-lighter"
+          );
+          searchBar.value = "";
+        }, 3000);
+        break;
+
+      case "chips":
+        this.uiBinding.chipsContainer.innerHTML = `
+          <div class="w-full p-4 text-center">
+            <p class="text-xs font-serif3 text-rose-600 dark:text-pink-400">
+              ${errorConfig.message}
+            </p>
+          </div>`;
+        break;
+
+      case "jobCount":
+        const alert = this.uiBinding.jobCountAlert;
+        alert.textContent = errorConfig.message;
+        alert.classList.remove("hidden");
+        alert.classList.add(
+          "text-rose-600",
+          "dark:text-pink-400",
+          "text-xs",
+          "font-serif3"
+        );
+        setTimeout(() => alert.classList.add("hidden"), 3000);
+        break;
+
+      case "page":
+        // Create full-page overlay error
+        const overlay = document.createElement("div");
+        overlay.className = `fixed inset-0 bg-amber-1 dark:bg-slate-9 bg-opacity-95 dark:bg-opacity-95 
+          flex items-center justify-center z-50`;
+        overlay.innerHTML = `
+          <div class="text-center p-6 rounded-xl max-w-md">
+            <ion-icon name="warning-outline" class="text-6xl text-rose-500 dark:text-pink-500 mb-4"></ion-icon>
+            <p class="leading-[3rem] text-base font-serif3 text-rose-700 dark:text-pink-400 mb-6">${errorConfig.message}</p>
+            <button onclick="window.location.reload()" 
+              class="px-6 py-3 bg-amber-11 text-slate-1 rounded-full hover:bg-amber-10 
+              transition-colors duration-fast text-sm font-serif3">
+              Refresh Page
+            </button>
+          </div>`;
+        document.body.appendChild(overlay);
+        break;
+
+      default:
+        console.warn("Unhandled error type:", errorConfig.type);
     }
   }
-
-  toggleFiltersPanel(isMobile) {}
 
   favoriteFiltersUI(favFilter, addRemove) {
     switch (addRemove) {
@@ -328,14 +466,17 @@ class UIManager {
     }
   }
 
-  seenJobsUI(seenJob, addRemove) {
+  seenJobsUI(seenJob, addRemove, eventTarget) {
     switch (addRemove) {
       case "remove":
+        eventTarget.setAttribute("name", "eye-outline");
         break;
 
       case "add":
+        eventTarget.setAttribute("name", "eye-off-outline");
         break;
     }
+    console.log(eventTarget);
   }
 
   updateUI(
@@ -345,14 +486,14 @@ class UIManager {
     filter,
     filterKey,
     filterValue,
-    addingOrReplace
+    addingOrReplaceOrDisplay
   ) {
     jobs
       ? this.uiRendering.renderJobs(
           jobs,
           filterKey,
           filterValue,
-          addingOrReplace
+          addingOrReplaceOrDisplay
         )
       : null;
 
@@ -389,18 +530,19 @@ class UIRendering {
     this.uiManager = UIManagerIns;
   }
 
-  renderJobs(jobs, filterKey, filterValue, addingOrReplace) {
-    if (addingOrReplace === "replace") {
+  renderJobs(jobs, filterKey, filterValue, addingOrReplaceOrDisplay) {
+    console.log("addingOrReplaceOrDisplay:", addingOrReplaceOrDisplay);
+    if (addingOrReplaceOrDisplay === "replace") {
       this.uiManager.uiBinding.jobContainer.innerHTML = "";
       jobs.forEach((job) => {
         const [tag1, tag2, tag3, tag4] = job.tags;
 
         const HTML = `
             <div
-              class="job tablet:text-xxs text-[0.9rem] min-w-full rounded-3xl tablet:rounded-[10rem] bg-amber-2 dark:bg-slate-11 px-6 py-3 pl-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit tablet:max-h-8 leading-6 flex items-center justify-center transition-all duration-fast hover:bg-amber-3 dark:hover:bg-slate-9"
+              class="job tablet:text-xxs text-[0.9rem] min-w-full rounded-3xl tablet:rounded-[10rem] bg-amber-2 dark:bg-slate-11 px-6 py-3 pl-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit leading-6 flex items-center justify-center transition-all duration-fast hover:bg-amber-3 dark:hover:bg-slate-9"
               id="${job.jobId}"
-              data-filterkey="${filterKey}"
-              data-filtervalue="${filterValue}"
+              data-filterkey="${job.filterKey}"
+              data-filtervalue="${job.filterValue}"
             >
               <div
                 class="grid tablet:grid-cols-[fit-content(100%)_1fr_fit-content(100%)] grid-cols-[fit-content(100%)_1fr] grid-rows-[1fr_fit-content(100%)] tablet:grid-rows-none items-center min-w-full gap-3 tablet:py-3 gap-y-1 cursor-pointer group"
@@ -438,7 +580,7 @@ class UIRendering {
                     >
                     <span
                       class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
-                      >${filterValue.replace(/\b\w/g, (c) => c.toUpperCase())}</span
+                      >${job.filterValue.replace(/\b\w/g, (c) => c.toUpperCase())}</span
                     >
                   <span
                     class="${tag1 ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
@@ -467,15 +609,102 @@ class UIRendering {
                     >Apply</a
                   >
                   <ion-icon
-                    onclick="buttonAction(event)"
                     name="eye-outline"
-                    class="text-sm hover:scale-125 duration-fast transition-all cursor-pointer"
+                    class="seen-job-btn text-sm hover:scale-125 duration-fast transition-all cursor-pointer"
                   ></ion-icon>
                 </div>
               </div>
             </div>
               `;
-        this.uiManager.uiBinding.jobContainer.innerHTML += HTML;
+        this.uiManager.uiBinding.jobContainer.innerHTML =
+          HTML + this.uiManager.uiBinding.jobContainer.innerHTML;
+      });
+    } else if (addingOrReplaceOrDisplay === "display") {
+      this.uiManager.uiBinding.jobContainer.innerHTML = "";
+      jobs.forEach((job) => {
+        const [tag1, tag2, tag3, tag4] = job.tags;
+
+        const HTML = `
+            <div
+              class="job tablet:text-xxs text-[0.9rem] min-w-full rounded-3xl tablet:rounded-[10rem] bg-amber-2 dark:bg-slate-11 px-6 py-3 pl-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit leading-6 flex items-center justify-center transition-all duration-fast hover:bg-amber-3 dark:hover:bg-slate-9"
+              id="${job.jobId}"
+              data-filterkey="${job.filterKey}"
+              data-filtervalue="${job.filterValue}"
+            >
+              <div
+                class="grid tablet:grid-cols-[fit-content(100%)_1fr_fit-content(100%)] grid-cols-[fit-content(100%)_1fr] grid-rows-[1fr_fit-content(100%)] tablet:grid-rows-none items-center min-w-full gap-3 tablet:py-3 gap-y-1 cursor-pointer group"
+                onclick="window.location.href='${job.jobUrl}';"
+              >
+                <img
+                  src="${job.companyLogo}"
+                  alt=${job.company}"
+                  class="rounded-full h-6 min-w-max"
+                />
+                <div
+                  class="flex flex-col justify-center gap-1 tablet:gap-2 font-normal"
+                >
+                  <div
+                    class="flex flex-col tablet:flex-row tablet:items-center tablet:gap-2 text-[0.95rem] tablet:whitespace-nowrap items-start gap-[0.2rem]"
+                  >
+                    <h4>${job.title}</h4>
+                    <h4 class="hidden tablet:block">✦</h4>
+                    <h4 class="opacity-70 text-[0.9rem]">${job.company}</h4>
+                  </div>
+
+                  <div class="flex flex-wrap justify-start gap-2 text-[1rem]">
+                  <span
+                    class="${job.salary ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
+                    >
+                    ${job.salary || ""}</span>
+                    <span
+                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
+                    >
+                      ${job.jobFormat.replace("_", " ").replace(/\b\w/g, (c) => c.toUpperCase())}</span
+                    >
+                    <span
+                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
+                      >${job.location}</span
+                    >
+                    <span
+                      class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2"
+                      >${job.filterValue.replace(/\b\w/g, (c) => c.toUpperCase())}</span
+                    >
+                  <span
+                    class="${tag1 ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
+                    >
+                    ${tag1?.replace(/\b\w/g, (c) => c.toUpperCase()) || ""}</span>
+                  <span
+                    class="${tag2 ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
+                    >
+                    ${tag2?.replace(/\b\w/g, (c) => c.toUpperCase()) || ""}</span>
+                  <span
+                    class="${tag3 ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
+                    >
+                    ${tag3?.replace(/\b\w/g, (c) => c.toUpperCase()) || ""}</span>
+                  <span
+                    class="${tag4 ? "whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2" : "hidden"}"
+                    >
+                    ${tag4?.replace(/\b\w/g, (c) => c.toUpperCase()) || ""}</span>
+                  </div>
+                </div>
+                <div
+                  class="flex gap-2 items-center justify-center col-[_1_/_3] tablet:col-auto mt-2 tablet:mt-0 tablet:invisible tablet:group-hover:visible"
+                >
+                  <a
+                    href="The Link For the Job"
+                    class="px-2 py-1 tablet:px-3 tablet:py-2 rounded-3xl bg-amber-11 text-slate-1 hover:bg-amber-10 duration-fast transition-all drop-shadow-sm tablet:text-[1rem] hover:ring-4 ring-slate-2 ring-opacity-80"
+                    >Apply</a
+                  >
+                  <ion-icon
+                    name="eye-outline"
+                    class="seen-job-btn text-sm hover:scale-125 duration-fast transition-all cursor-pointer"
+                  ></ion-icon>
+                </div>
+              </div>
+            </div>
+              `;
+        this.uiManager.uiBinding.jobContainer.innerHTML =
+          HTML + this.uiManager.uiBinding.jobContainer.innerHTML;
       });
     } else {
       jobs.forEach((job) => {
@@ -483,8 +712,8 @@ class UIRendering {
 
         const HTML = `
             <div
-              class="job tablet:text-xxs text-[0.9rem] min-w-full rounded-3xl tablet:rounded-[10rem] bg-amber-2 dark:bg-slate-11 px-6 py-3 pl-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit tablet:max-h-8 leading-6 flex items-center justify-center transition-all duration-fast hover:bg-amber-3 dark:hover:bg-slate-9"
-              id="${job.jobId}"
+              class="job tablet:text-xxs text-[0.9rem] min-w-full rounded-3xl tablet:rounded-[10rem] bg-amber-2 dark:bg-slate-11 px-6 py-3 pl-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit leading-6 flex items-center justify-center transition-all duration-fast hover:bg-amber-3 dark:hover:bg-slate-9"
+              id="${job.idJob}"
               data-filterkey="${filterKey}"
               data-filtervalue="${filterValue}"
             >
@@ -553,15 +782,15 @@ class UIRendering {
                     >Apply</a
                   >
                   <ion-icon
-                    onclick="buttonAction(event)"
                     name="eye-outline"
-                    class="text-sm hover:scale-125 duration-fast transition-all cursor-pointer"
+                    class="seen-job-btn text-sm hover:scale-125 duration-fast transition-all cursor-pointer"
                   ></ion-icon>
                 </div>
               </div>
             </div>
               `;
-        this.uiManager.uiBinding.jobContainer.innerHTML += HTML;
+        this.uiManager.uiBinding.jobContainer.innerHTML =
+          HTML + this.uiManager.uiBinding.jobContainer.innerHTML;
       });
     }
   }
@@ -629,6 +858,7 @@ class UIBinding {
     this.uiManager = UIManagerIns;
 
     this.searchBarSearchBtn = this.safeQuerySelector("#searchbar-btn");
+    this.searchBarSearch = this.safeQuerySelector("#searchbar");
     this.chipsContainer = this.safeQuerySelector("#chips-container");
     this.filterPanel = this.safeQuerySelectorAll(".filter-panel");
     this.jobContainer = this.safeQuerySelector("#jobs-container");
@@ -659,6 +889,7 @@ class UIBinding {
     this.mobileMenuToggle = this.safeQuerySelector("#mobile-menu");
     this.mobileMenuLinks = this.safeQuerySelector("#mobile-menu-links");
     this.jobCount = this.safeQuerySelector("#job-count");
+    this.jobCountAlert = this.safeQuerySelector("#job-count-alert");
   }
 
   safeQuerySelector(selector) {
@@ -678,29 +909,91 @@ class UIBinding {
   }
 
   bindEvents() {
-    this.searchBarSearchBtn.addEventListener("click", (e) =>
-      this.uiManager.app.handleSearchingEvent(
-        "_",
-        "searchbar",
-        e.target?.dataset?.filterkey,
-        e.target?.dataset?.filtervalue,
-        e.target?.id,
-        "_"
-      )
-    );
+    this.searchBarSearchBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      const searchTerm = this.searchBarSearch.value;
+      if (!searchTerm) return;
+
+      const { filterKey, filterValue } =
+        this.uiManager.app.filterManager.findMatchingFilter(searchTerm);
+      console.log("filterKey and filterValue:", filterKey, filterValue);
+
+      if (filterKey && filterValue) {
+        this.uiManager.app.handleSearchingEvent(
+          this.searchBarSearch,
+          "searchbar",
+          filterKey,
+          filterValue,
+          "_",
+          "_"
+        );
+      } else {
+        const matchedJobs = await this.advancedSearch(searchTerm);
+        if (matchedJobs && matchedJobs.length > 0) {
+          this.uiManager.app.handleSearchingEvent(
+            this.searchBarSearch,
+            "searchbar",
+            matchedJobs[0].filterKey,
+            matchedJobs[0].filterValue,
+            "_",
+            "_",
+            matchedJobs
+          );
+        }
+      }
+    });
+
+    this.searchBarSearch.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+
+        const searchTerm = this.searchBarSearch.value;
+        if (!searchTerm) return;
+
+        const { filterKey, filterValue } =
+          this.uiManager.app.filterManager.findMatchingFilter(searchTerm);
+        console.log("filterKey and filterValue:", filterKey, filterValue);
+
+        if (filterKey && filterValue) {
+          this.uiManager.app.handleSearchingEvent(
+            this.searchBarSearch,
+            "searchbar",
+            filterKey,
+            filterValue,
+            "_",
+            "_"
+          );
+        } else {
+          const matchedJobs = await this.advancedSearch(searchTerm);
+          if (matchedJobs && matchedJobs.length > 0) {
+            this.uiManager.app.handleSearchingEvent(
+              this.searchBarSearch,
+              "searchbar",
+              matchedJobs[0].filterKey,
+              matchedJobs[0].filterValue,
+              "_",
+              "_",
+              matchedJobs
+            );
+          }
+        }
+      }
+    });
 
     this.chipsContainer.addEventListener("click", (e) => {
       const chipElement = e.target.closest(".chip");
       console.log(chipElement);
 
-      this.uiManager.app.handleSearchingEvent(
-        e.target,
-        "chip",
-        chipElement?.dataset?.filterkey,
-        chipElement?.dataset?.filtervalue,
-        chipElement?.id,
-        chipElement?.classList.contains("ACTIVE") ? true : false
-      );
+      chipElement &&
+        this.uiManager.app.handleSearchingEvent(
+          e.target,
+          "chip",
+          chipElement?.dataset?.filterkey,
+          chipElement?.dataset?.filtervalue,
+          chipElement?.id,
+          chipElement?.classList.contains("ACTIVE") ? true : false
+        );
     });
 
     this.filterPanel.forEach((panel) =>
@@ -718,12 +1011,6 @@ class UIBinding {
         );
       })
     );
-
-    this.jobContainer.addEventListener("click", (e) => {
-      const seenJobBtn = e.target.closest(".seen-job-btn");
-
-      this.uiManager.app.jobManager.handleJobSeen(seenJobBtn?.dataset?.jobId);
-    });
 
     this.favFiltersContainer.addEventListener("click", (e) => {
       const favoriteFilterBtn = e.target.closest(".favorite-filter-btn");
@@ -775,15 +1062,155 @@ class UIBinding {
       }
     });
 
-    this.sortingOptions;
+    this.jobCount.addEventListener("change", (e) => {
+      const count = parseInt(e.target.value);
+      if (!this.isJobCountValid(count)) {
+        e.target.value = "15";
+      }
+    });
 
-    this.loadingSkeltonJobs;
+    this.safeQuerySelectorAll(".seen-job-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        this.uiManager.app.jobManager.handleSeenJob(e);
+      });
+    });
   }
 
   isJobCountValid(jobCount) {
     if (jobCount > 0 && jobCount <= 30) return jobCount;
-    console.log(jobCount);
-    return 15;
+    this.uiManager.app.handleError("jobCountInvalid", null, null);
+    return false;
+  }
+
+  async advancedSearch(searchTerm) {
+    try {
+      const data = await this.uiManager.uiLoading.loadingManagerSearch(
+        fetch(this.uiManager.app.jobManager.apiEndpoint).then((response) => {
+          if (!response.ok) throw new Error("Network response was not ok");
+          return response.json();
+        })
+      );
+      const normalizedSearch = searchTerm.toLowerCase();
+      console.log(
+        "normalizedSearch, searchTerm, data:",
+        normalizedSearch,
+        searchTerm,
+        data
+      );
+
+      // First, find exact matches
+      let exactMatches = data.jobs
+        .filter((job) => {
+          return (
+            job.title?.toLowerCase() === normalizedSearch ||
+            job.tags?.some((tag) => tag.toLowerCase() === normalizedSearch) ||
+            job.candidate_required_location?.toLowerCase() ===
+              normalizedSearch ||
+            job.company_name?.toLowerCase() === normalizedSearch
+          );
+        })
+        .map((job) => {
+          let filterKey, filterValue;
+
+          if (job.title.toLowerCase() === normalizedSearch) {
+            filterKey = "search_by_title";
+            filterValue = `Title: ${job.title}`;
+          } else if (
+            job.tags?.some((tag) => tag.toLowerCase() === normalizedSearch)
+          ) {
+            filterKey = "search_by_tag";
+            filterValue = `Tag: ${job.tags.find((tag) => tag.toLowerCase() === normalizedSearch)}`;
+          } else if (
+            job.candidate_required_location?.toLowerCase() === normalizedSearch
+          ) {
+            filterKey = "search_by_location";
+            filterValue = `Location: ${job.candidate_required_location}`;
+          } else if (job.company_name?.toLowerCase() === normalizedSearch) {
+            filterKey = "search_by_company";
+            filterValue = `Company: ${job.company_name}`;
+          }
+
+          return new Job(
+            this.uiManager.app.jobManager,
+            this.uiManager.idManager("job", job),
+            job.title,
+            job.url,
+            job.job_type,
+            job.company_name,
+            job.candidate_required_location,
+            job.company_logo,
+            job.publication_date,
+            job.description,
+            job.salary,
+            job.tags,
+            filterKey,
+            filterValue
+          );
+        });
+      console.log("exactMatches:", exactMatches);
+
+      // Then, find partial matches
+      let partialMatches = data.jobs
+        .filter((job) => {
+          return (
+            !exactMatches.some((exact) => exact.idJob === job.id) && // Exclude exact matches
+            (job.title?.toLowerCase().includes(normalizedSearch) ||
+              job.tags?.some((tag) =>
+                tag?.toLowerCase().includes(normalizedSearch)
+              ) ||
+              job.candidate_required_location
+                ?.toLowerCase()
+                .includes(normalizedSearch) ||
+              job.company_name?.toLowerCase().includes(normalizedSearch))
+          );
+        })
+        .map((job) => {
+          let filterKey = "search_partial";
+          let filterValue = `Search: ${searchTerm}`;
+
+          return new Job(
+            this.uiManager.app.jobManager,
+            this.uiManager.idManager("job", job),
+            job.title,
+            job.url,
+            job.job_type,
+            job.company_name,
+            job.candidate_required_location,
+            job.company_logo,
+            job.publication_date,
+            job.description,
+            job.salary,
+            job.tags,
+            filterKey,
+            filterValue
+          );
+        });
+
+      if (exactMatches.length === 0 && partialMatches.length === 0) {
+        this.uiManager.app.handleError("searchNotFound", null, null);
+        return null;
+      }
+
+      // Get required job count
+      const requiredJobCount = this.isJobCountValid(this.jobCount.value) || 15;
+
+      // Fill with partial matches if needed
+      let result = [...exactMatches];
+      if (result.length < requiredJobCount) {
+        result.push(
+          ...partialMatches.slice(0, requiredJobCount - result.length)
+        );
+      }
+
+      return result;
+    } catch (error) {
+      this.uiManager.app.handleError(
+        "searchNotFound",
+        error.code,
+        error.message
+      );
+      return null;
+    }
   }
 }
 
@@ -973,7 +1400,7 @@ class JobManager {
     return this.seenJobs;
   }
 
-  saveSeenJobs() {
+  saveSeenJob() {
     const uniqueSeenJobs = Array.from(
       new Set(this.seenJobs.map((job) => job.idJob))
     ).map((idJob) => this.seenJobs.find((job) => job.idJob === idJob));
@@ -982,9 +1409,11 @@ class JobManager {
       "seenJobs",
       JSON.stringify(uniqueSeenJobs.map((job) => job.getJob))
     );
+
+    console.log("Saved Seen Jobs:", uniqueSeenJobs);
   }
 
-  toggleJobSeen(job) {
+  toggleJobSeen(job, eventTarget) {
     const jobIndex = this.seenJobs.findIndex(
       (seenJob) => seenJob.idJob === job.idJob
     );
@@ -993,26 +1422,40 @@ class JobManager {
       ? (this.seenJobs.push(job), (job.isSeen = true))
       : (this.seenJobs.splice(jobIndex, 1), (job.isSeen = false));
 
-    this.app.uiManager.seenJobsUI(job, jobIndex === -1 ? "add" : "remove");
-
-    this.saveSeenJobs();
+    this.app.uiManager.seenJobsUI(
+      job,
+      jobIndex === -1 ? "add" : "remove",
+      eventTarget
+    );
   }
 
-  handleJobSeen(jobId) {
-    const job = this.jobs.find((j) => j.idJob === jobId);
-    job ? this.toggleJobSeen(job) : null;
+  handleSeenJob(event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    const jobCard = event.target.closest(".job");
+    const jobId = jobCard.id;
+    console.log("Job ID:", jobId);
+    console.log("Job Card:", jobCard);
+
+    const job = this.jobsDisplayed.find((job) => job.idJob === Number(jobId));
+    this.toggleJobSeen(job, event.target);
+
+    jobCard.classList.add("seen-job");
+
+    this.saveSeenJob(jobId);
   }
 
   removeActiveFiltersJobs(filterKey, filterValue) {
     const jobsDivs =
-      this.app.uiManager.uiBinding.jobContainer.querySelectorAll("div");
-    console.log(jobsDivs);
+      this.app.uiManager.uiBinding.jobContainer.querySelectorAll("div.job");
+    console.log("Job Divs:", jobsDivs);
     const removingJobs = [];
 
     this.jobsDisplayed = this.jobsDisplayed.filter((job) => {
       const shouldRemove =
         job.filterKey === filterKey && job.filterValue === filterValue;
-      console.log(shouldRemove);
+      console.log(`Job ID: ${job.idJob}, Should Remove: ${shouldRemove}`);
       if (shouldRemove) {
         removingJobs.push(job.idJob);
       }
@@ -1022,6 +1465,7 @@ class JobManager {
     removingJobs.forEach((jobId) => {
       jobsDivs.forEach((div) => {
         if (div.getAttribute("id") === String(jobId)) {
+          console.log(`Removing job div with ID: ${jobId}`);
           div.remove();
         }
       });
@@ -1062,7 +1506,7 @@ class Job {
     this.companyLogo = CompanyLogo;
     this.description = Description;
     this.salary = this.extractCleanSalary(Salary);
-    this.publicationDate = this.getFormattedDate(PostingDate);
+    this.publicationDate = this.validateAndFormatDate(PostingDate);
     this.tags = Tags;
     this.filterKey = filterKey;
     this.filterValue = filterValue;
@@ -1093,12 +1537,26 @@ class Job {
     });
   }
 
-  getFormattedDate(date) {
-    return new Intl.DateTimeFormat(navigator.language, {
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-    }).format(new Date(date));
+  validateAndFormatDate(dateString) {
+    try {
+      if (!dateString) return "No date available";
+
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) return "Invalid date";
+
+      return new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      }).format(date);
+    } catch (error) {
+      console.warn("Date formatting error:", error);
+      return "Invalid date";
+    }
+  }
+
+  getFormattedDate() {
+    return this.date;
   }
 
   extractCleanSalary(salaryString) {
@@ -1230,7 +1688,7 @@ class CategoryManager {
 
       return this.categories;
     } catch (error) {
-      this.app.handleError(fetchingCategories, error.code, error.message);
+      this.app.handleError("fetchingCategories", error.code, error.message);
       return [];
     }
   }
@@ -1383,6 +1841,35 @@ class FilterManager {
         ),
         this.activeFilters[this.activeFilters.length - 1]);
   }
+
+  findMatchingFilter(searchTerm) {
+    const normalizedSearchTerm = searchTerm.toLowerCase();
+    const categories = this.app.categoryManager.categories;
+    const chips = this.app.categoryManager.chips;
+
+    for (const category of categories) {
+      for (const value of category.values) {
+        if (
+          value.toLowerCase() === normalizedSearchTerm ||
+          value.toUpperCase() === searchTerm ||
+          value === searchTerm
+        ) {
+          return { filterKey: category.key, filterValue: value };
+        }
+      }
+    }
+
+    for (const chip of chips) {
+      if (
+        chip.name.toLowerCase() === normalizedSearchTerm ||
+        chip.name.toUpperCase() === searchTerm ||
+        chip.name === searchTerm
+      ) {
+        return { filterKey: "category", filterValue: chip.name };
+      }
+    }
+    return { filterKey: null, filterValue: null };
+  }
 }
 
 class Filter {
@@ -1412,8 +1899,8 @@ async function setupApp() {
     await app.initializeApp();
     app.uiManager.uiBinding.bindEvents();
 
-    const chip = app.categoryManager.chips[0];
-    // console.log(chip);
+    const category = app.categoryManager.categories[0];
+    // console.log(category);
 
     const defaultQuery = {
       keyword: "testing",
@@ -1428,7 +1915,7 @@ async function setupApp() {
       defaultQuery.limit
     );
 
-    console.log("Testing Jobs:", jobs);
+    // console.log("Testing Jobs:", jobs);
   } catch (error) {
     console.error("Error during app setup:", error);
   }
