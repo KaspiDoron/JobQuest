@@ -103,7 +103,7 @@
     <!--  -->
     <section>
       <nav
-        class="text-sm bg-amber-1 text-amber-11 dark:bg-slate-9 dark:text-slate-4 grid grid-cols-[fit-content(100%)_1fr] place-items-center py-3 px-4 z-30 fixed top-0 left-0 w-full"
+        class="text-sm bg-amber-1 text-amber-11 dark:bg-slate-9 dark:text-slate-4 grid grid-cols-[fit-content(100%)_1fr] place-items-center py-3 px-4 z-30 fixed top-0 left-0 w-full transition-all duration-normal"
       >
         <a
           href="#"
@@ -335,6 +335,7 @@
     <!--  -->
     <section
       class="bg-amber-1 dark:bg-slate-9 pt-8 shadow-[0_1rem_0.8rem_-1rem_rgba(0,0,0,0.2)] dark:shadow-[0_1rem_2rem_-1rem_rgba(0,0,0,0.8)]"
+      id="searchbar-section"
     >
       <!-- Page Center-->
       <div
@@ -490,26 +491,91 @@
         class="px-2 mobile:px-3 tablet:px-4 laptop:px-6 desktop:px-7 widescreen:px-8 py-2 tablet:py-3 laptop:py-4 desktop:py-5 widescreen:py-6"
       >
         <!-- Container SECTION -->
-        <div class="grid grid-cols-1 tablet:grid-cols-[25vw_1fr] gap-2">
+        <div
+          class="grid grid-cols-1 tablet:grid-cols-[25vw_1fr] gap-2 max-w-full"
+        >
           <!-- Filters Panels -->
           <aside class="hidden tablet:block">
-            <div class="flex gap-4 flex-col">
+            <div class="flex gap-4 flex-col" id="filters-container">
               <!-- Number of jobs displaying -->
 
-              <!-- Filter Panel -->
-              <div class="">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Commodi molestias cupiditate nulla dolore illo magni voluptatem.
-                Fugit fugiat recusandae mollitia autem veritatis sequi cum hic
-                provident accusamus? Vero, sed accusantium.
+              <!-- Favorite Filter Panel -->
+              <div
+                class="filter-panel group flex flex-col gap-2 p-4 rounded-3xl border-amber-2 border-2 dark:border-slate-7 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.2)]"
+                data-filterkey="candidate_required_location"
+              >
+                <h2 class="mb-2 text-[1.2rem] leading-6">
+                  My favorite filters
+                </h2>
+
+                <div
+                  id="favorite-filters-container"
+                  class="flex flex-col gap-2"
+                ></div>
+              </div>
+              <!-- Location Filter Panel -->
+              <div
+                class="filter-panel group flex flex-col gap-2 p-4 rounded-3xl border-amber-2 border-2 dark:border-slate-7 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.2)]"
+                data-filterkey="candidate_required_location"
+              >
+                <h2 class="mb-2 text-[1.2rem] leading-6">
+                  I want to work remotely from...
+                </h2>
+
+                <div
+                  id="location-filters-container"
+                  class="flex flex-col gap-2"
+                ></div>
               </div>
 
-              <!-- Favorite Filter Panel -->
-              <div></div>
+              <!-- Job Type Filter Panel -->
+              <div
+                class="filter-panel group flex flex-col gap-2 p-4 rounded-3xl border-amber-2 border-2 dark:border-slate-7 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.2)]"
+                data-filterkey="job_type"
+              >
+                <h2 class="mb-2 text-[1.2rem] leading-6">
+                  I want to work in a format of...
+                </h2>
+
+                <div
+                  id="job-type-filters-container"
+                  class="flex flex-col gap-2"
+                ></div>
+              </div>
+
+              <!-- Companies Filter Panel -->
+              <div
+                class="filter-panel group flex flex-col gap-2 p-4 rounded-3xl border-amber-2 border-2 dark:border-slate-7 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.2)]"
+                data-filterkey="company_name"
+              >
+                <h2 class="mb-2 text-[1.2rem] leading-6">
+                  My dream company is...
+                </h2>
+
+                <div
+                  id="companies-filters-container"
+                  class="flex flex-col gap-2"
+                ></div>
+              </div>
+
+              <!-- Tags Filter Panel -->
+              <div
+                class="filter-panel group flex flex-col gap-2 p-4 rounded-3xl border-amber-2 border-2 dark:border-slate-7 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.2)]"
+                data-filterkey="company_name"
+              >
+                <h2 class="mb-2 text-[1.2rem] leading-6">
+                  I want to work in a company that works with...
+                </h2>
+
+                <div
+                  id="tags-filters-container"
+                  class="flex flex-col gap-2"
+                ></div>
+              </div>
             </div>
           </aside>
 
-          <!-- Jobs, Companies and Newsletter -->
+          <!-- Jobs and Companies -->
           <article class="flex flex-col gap-3">
             <!--  -->
             <!-- A CARD CONTAINER -->
@@ -599,13 +665,6 @@
         </div>
       </div>
     </section>
-
-    <!--  -->
-    <!-- AVOIDING ERRORS -->
-    <!--  -->
-    <div>
-      <section id="favorite-filters-container"></section>
-    </div>
 
     <!-- ION ICONS LINKS -->
     <script
