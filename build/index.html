@@ -92,7 +92,7 @@
     <link rel="stylesheet" href="css/output.css" />
 
     <!-- SCRIPT LINKS -->
-    <script defer src="application.js"></script>
+    <script defer src="app.js"></script>
 
     <title>JobQuest &mdash; Find Your Path</title>
   </head>
@@ -141,12 +141,13 @@
           </li>
 
           <li class="z-20">
-            <button
+            <a
               class="px-4 py-2 hover:opacity-80 hover:bg-amber-2 rounded-2xl dark:hover:bg-slate-11 transition-all duration-fast flex items-center justify-center gap-1 focus:shadow-[0_0_0_0.2rem] focus:border-amber-10 dark:focus:border-slate-10 max-laptop:hidden"
+              href="github.com/KaspiDoron/JobQuest"
             >
-              <ion-icon class="text-base" name="search-outline"></ion-icon
-              >Accelerate Your Search
-            </button>
+              <ion-icon class="text-base" name="logo-github"></ion-icon>GitHub
+              Repo
+            </a>
           </li>
 
           <li class="relative max-laptop:hidden z-20">
@@ -181,18 +182,20 @@
               >
                 Job Format
               </button>
-              <button
-                class="text-amber-7 underline underline-offset-4 px-5 py-2 hover:bg-amber-1 hover:opacity-80 transition-all duration-fast"
+              <a
+                class="text-amber-7 underline underline-offset-4 px-5 py-2 hover:bg-amber-1 hover:opacity-80 transition-all duration-fast flex items-center justify-center"
+                href="https://www.linkedin.com/in/doron-kaspi-3041a9188/"
               >
                 LinkedIn
-              </button>
+              </a>
               <button
                 class="px-5 py-2 hover:bg-slate-3 hover:opacity-80 transition-all duration-fast"
               >
-                Salary
+                Company
               </button>
               <button
                 class="px-5 py-3 m-2 bg-amber-11 text-slate-1 dark:bg-slate-11 hover:bg-amber-9 dark:hover:bg-slate-9 rounded-3xl transition-all duration-fast"
+                id="seen-jobs-present"
               >
                 Seen Jobs
               </button>
@@ -265,18 +268,19 @@
           class="flex flex-col gap-y-3 items-center justify-start absolute translate-x-[-50rem] bg-amber-1 h-screen left-0 z-20 px-4 pb-6 pt-8 border-r-8 dark:bg-slate-9 bg-opacity-90 laptop:hidden font-serif3 font-light transition-all duration-slow dark:text-slate-3 opacity-90 max-w-sm text-sm whitespace-nowrap"
         >
           <button
-            class="px-4 py-2 rounded-2xl dark:hover:bg-slate-11 hover:bg-amber-2 transition-all duration-fast flex gap-2 justify-center items-center"
+            class="px-4 py-2 rounded-2xl dark:hover:bg-slate-11 hover:bg-amber-2 transition-all duration-fast gap-2 justify-center items-center hidden tablet:flex"
           >
             Favorite Filters
             <ion-icon class="text-lg" name="heart-half-sharp"></ion-icon>
           </button>
 
-          <button
+          <a
             class="px-4 py-2 rounded-2xl dark:hover:bg-slate-11 hover:bg-amber-2 transition-all duration-fast flex gap-2 justify-center items-center"
+            href="https://github.com/KaspiDoron/JobQuest"
           >
-            Elevate Your Search
-            <ion-icon class="text-lg" name="analytics-sharp"></ion-icon>
-          </button>
+            GitHub Repo
+            <ion-icon class="text-lg" name="logo-github"></ion-icon>
+          </a>
 
           <div
             id="dropdown-toggle-navbar-mobile"
@@ -296,32 +300,34 @@
             class="opacity-0 transition-all duration-fast ease-in-out flex flex-col gap-1 font-serif1 text-xs"
           >
             <button
-              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl"
+              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl hidden tablet:block"
             >
               Category
             </button>
             <button
-              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl"
+              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl hidden tablet:block"
             >
               Location
             </button>
             <button
-              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl"
+              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl hidden tablet:block"
             >
               Job Format
             </button>
-            <button
-              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl"
+            <a
+              class="text-amber-7 underline underline-offset-4 px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl flex items-center justify-center"
+              href="https://www.linkedin.com/in/doron-kaspi-3041a9188/"
             >
               LinkedIn
-            </button>
+            </a>
             <button
-              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl"
+              class="px-5 py-2 dark:hover:bg-slate-11 hover:bg-amber-2 hover:opacity-80 transition-all duration-fast rounded-xl hidden tablet:block"
             >
-              Salary
+              Company
             </button>
             <button
               class="px-5 py-3 m-2 bg-amber-11 text-slate-1 dark:bg-slate-10 hover:bg-amber-9 dark:hover:bg-slate-11 rounded-3xl transition-all duration-fast"
+              id="seen-jobs-present-mobile"
             >
               Seen Jobs
             </button>
@@ -466,7 +472,7 @@
                   id="job-count"
                   type="number"
                   placeholder="15"
-                  value="2"
+                  value="5"
                   class="ml-2 bg-white border shadow-sm px-2 py-1 border-slate-4 w-7 placeholder-slate-4 text-center rounded-3xl focus:outline-none focus:ring-4 ring-opacity-40 ring-amber-11 dark:ring-slate-3 dark:text-slate-11 pl-4"
                 />
                 <p
@@ -485,7 +491,7 @@
     <!--  -->
     <!-- CONTENT SECTION -->
     <!--  -->
-    <section class="dark:bg-slate-10 dark:text-slate-4">
+    <section class="dark:bg-slate-10 dark:text-slate-4" id="content-section">
       <!-- Page Center-->
       <div
         class="px-2 mobile:px-3 tablet:px-4 laptop:px-6 desktop:px-7 widescreen:px-8 py-2 tablet:py-3 laptop:py-4 desktop:py-5 widescreen:py-6"
@@ -497,12 +503,10 @@
           <!-- Filters Panels -->
           <aside class="hidden tablet:block">
             <div class="flex gap-4 flex-col" id="filters-container">
-              <!-- Number of jobs displaying -->
-
               <!-- Favorite Filter Panel -->
               <div
-                class="filter-panel group flex flex-col gap-2 p-4 rounded-3xl border-amber-2 border-2 dark:border-slate-7 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.2)]"
-                data-filterkey="candidate_required_location"
+                class="group flex flex-col gap-2 p-4 rounded-3xl border-amber-2 border-2 dark:border-slate-7 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.2)]"
+                id="favorite-filters-panel"
               >
                 <h2 class="mb-2 text-[1.2rem] leading-6">
                   My favorite filters
@@ -511,7 +515,37 @@
                 <div
                   id="favorite-filters-container"
                   class="flex flex-col gap-2"
-                ></div>
+                >
+                  <div
+                    class="filter-loading-skelton hidden flex flex-wrap gap-2 animate-pulse"
+                    id="favorite-filters-container-skelton"
+                  >
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                  </div>
+                </div>
               </div>
               <!-- Location Filter Panel -->
               <div
@@ -525,7 +559,37 @@
                 <div
                   id="location-filters-container"
                   class="flex flex-col gap-2"
-                ></div>
+                >
+                  <div
+                    class="filter-loading-skelton hidden flex flex-wrap gap-2 animate-pulse"
+                    id="location-container-skelton"
+                  >
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                  </div>
+                </div>
               </div>
 
               <!-- Job Type Filter Panel -->
@@ -540,7 +604,37 @@
                 <div
                   id="job-type-filters-container"
                   class="flex flex-col gap-2"
-                ></div>
+                >
+                  <div
+                    class="filter-loading-skelton hidden flex flex-wrap gap-2 animate-pulse"
+                    id="job-type-container-skelton"
+                  >
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                  </div>
+                </div>
               </div>
 
               <!-- Companies Filter Panel -->
@@ -555,7 +649,37 @@
                 <div
                   id="companies-filters-container"
                   class="flex flex-col gap-2"
-                ></div>
+                >
+                  <div
+                    id="company-container-skelton"
+                    class="filter-loading-skelton hidden flex flex-wrap gap-2 animate-pulse"
+                  >
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                  </div>
+                </div>
               </div>
 
               <!-- Tags Filter Panel -->
@@ -567,10 +691,37 @@
                   I want to work in a company that works with...
                 </h2>
 
-                <div
-                  id="tags-filters-container"
-                  class="flex flex-col gap-2"
-                ></div>
+                <div id="tags-filters-container" class="flex flex-col gap-2">
+                  <div
+                    id="tags-container-skelton"
+                    class="filter-loading-skelton hidden flex flex-wrap gap-2 animate-pulse"
+                  >
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                    <label
+                      class="inline-flex items-center gap-3 cursor-pointer group px-6 py-4 rounded-2xl bg-amber-2 dark:bg-slate-11 transition-all hover:bg-amber-3 dark:hover:bg-slate-10"
+                    >
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           </aside>
