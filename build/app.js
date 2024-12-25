@@ -93,9 +93,6 @@ class App {
     };
   }
 
-  // TODO: 1. Create a skelton for the filters.
-  // TODO: 2. Create the favorite filters and seen jobs implementation.
-
   async initializeApp() {
     try {
       const chipPromise = await this.categoryManager.fetchChips();
@@ -109,11 +106,15 @@ class App {
         this.jobManager.fetchJobs("init", filterKey, filterValue),
       ]);
 
-      this.jobManager.getSeenJobs();
+      this.jobManager.seenJobs;
       this.filterManager.getFavFilters();
 
       const [chips, categories, jobs] =
         await this.uiManager.uiLoading.loadingManagerInit(promises);
+
+      this.uiManager.uiRendering.renderFavFilters(
+        this.filterManager.favoriteFilters
+      );
 
       this.jobManager.jobsDisplayed = jobs;
       console.log("The Jobs Displayed Are:", this.jobManager.jobsDisplayed);
@@ -177,7 +178,8 @@ class App {
           filterKey,
           filterValue,
           id,
-          isFilterActive
+          isFilterActive,
+          eventTarget
         );
       } else if (isLastFilter) {
         await this.handleSingleActiveFilter(
@@ -214,12 +216,19 @@ class App {
     }
   }
 
-  async handleNoActiveFilters(source, filterKey, filterValue, id, isActive) {
+  async handleNoActiveFilters(
+    source,
+    filterKey,
+    filterValue,
+    id,
+    isActive,
+    eventTarget
+  ) {
     console.log("Entering the handleNoActiveFilters method");
     this.jobManager.jobsDisplayed = [];
     const jobs = await this.fetchAndDisplayJobs(source, filterKey, filterValue);
     this.filterManager.toggleActiveFilter(
-      source,
+      eventTarget,
       id,
       filterKey,
       filterValue,
@@ -403,7 +412,6 @@ class UIManager {
     );
     this.app.IDs[target].push(randomId);
     // console.log(`The current IDs of ${target} are:`, this.app.IDs[target]);
-    console.log("The ID Manager is:", this.app.IDs);
     return randomId;
   }
 
@@ -522,14 +530,9 @@ class UIManager {
     }
   }
 
-  favoriteFiltersUI(favFilter, addRemove) {
-    switch (addRemove) {
-      case "remove":
-        break;
-
-      case "add":
-        break;
-    }
+  favoriteFiltersUI(favFilters) {
+    // Update the UI with latest favorite filters
+    this.uiRendering.renderFavFilters(this.app.filterManager.favoriteFilters);
   }
 
   seenJobsUI(seenJob, addRemove, eventTarget) {
@@ -623,9 +626,13 @@ class UIRendering {
 
   renderJobs(jobs, filterKey, filterValue, addingOrReplaceOrDisplay) {
     console.log("addingOrReplaceOrDisplay:", addingOrReplaceOrDisplay);
+    if (!Array.isArray(jobs)) {
+      console.error("No jobs array provided");
+      return;
+    }
+
     if (addingOrReplaceOrDisplay === "replace") {
       this.uiManager.uiBinding.jobContainer.innerHTML = "";
-      console.log(jobs);
       jobs.forEach((job) => {
         const [tag1, tag2, tag3, tag4] = job.tags;
 
@@ -800,6 +807,78 @@ class UIRendering {
         this.uiManager.uiBinding.jobContainer.innerHTML =
           HTML + this.uiManager.uiBinding.jobContainer.innerHTML;
       });
+    } else if (addingOrReplaceOrDisplay === "seenJobs") {
+      this.uiManager.uiBinding.jobContainer.innerHTML = "";
+      console.log("The Jobs are:", jobs);
+
+      jobs.forEach((job) => {
+        try {
+          console.log("The Job is:", job);
+          const tags = job.tags || [];
+          console.log("The Tags are:", tags);
+          const tagElements = tags
+            .map((tag) =>
+              tag
+                ? `
+            <span class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2">
+              ${tag.replace(/\b\w/g, (c) => c.toUpperCase())}
+            </span>
+          `
+                : ""
+            )
+            .join("");
+
+          const HTML = `
+            <div class="job tablet:text-xxs text-[0.9rem] min-w-fit rounded-3xl tablet:rounded-[10rem] bg-amber-2 dark:bg-slate-11 px-6 py-3 pl-3 border-2 border-slate-3 backdrop-opacity-60 shadow-[0_0_0.2rem_0_rgba(0,0,0,0.1)] dark:border-opacity-40 max-h-fit leading-6 flex items-center justify-center transition-all duration-fast hover:bg-amber-3 dark:hover:bg-slate-9"
+              id="${job.idJob}"
+              data-filterkey="${job.filterKey || ""}"
+              data-filtervalue="${job.filterValue || ""}"
+            >
+              <div class="grid tablet:grid-cols-[fit-content(100%)_1fr_fit-content(100%)] grid-cols-[fit-content(100%)_1fr] grid-rows-[1fr_fit-content(100%)] tablet:grid-rows-none items-center min-w-full gap-3 tablet:py-3 gap-y-1 cursor-pointer group"
+                onclick="window.location.href='${job.jobUrl}';"
+              >
+                <img src="${job.companyLogo}" alt="${job.company}" class="rounded-full h-6 min-w-max"/>
+                <div class="flex flex-col justify-center gap-1 tablet:gap-2 font-normal">
+                  <div class="flex flex-col tablet:flex-row tablet:items-center tablet:gap-2 text-[0.95rem] tablet:whitespace-nowrap items-start gap-[0.2rem]">
+                    <h4>${job.title}</h4>
+                    <h4 class="hidden tablet:block">✦</h4>
+                    <h4 class="opacity-70 text-[0.9rem]">${job.company}</h4>
+                  </div>
+                  <div class="flex flex-wrap justify-start gap-2 text-[1rem]">
+                    ${
+                      job.salary
+                        ? `
+                      <span class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2">
+                        ${job.salary}
+                      </span>
+                    `
+                        : ""
+                    }
+                    <span class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2">
+                      ${(job.jobFormat || "").replace("_", " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+                    </span>
+                    <span class="whitespace-nowrap max-w-min font-lighter opacity-80 rounded-2xl dark:bg-slate-10 bg-[#F0E8DB] laptop:font-lighter cursor-pointer hover:opacity-100 transition-all duration-fast hover:bg-[#e4d7c2] dark:hover:bg-slate-9 px-2 py-1 tablet:py-2">
+                      ${job.location || ""}
+                    </span>
+                    ${tagElements}
+                  </div>
+                </div>
+                <div class="flex gap-2 items-center justify-center col-[_1_/_3] tablet:col-auto mt-2 tablet:mt-0 tablet:invisible tablet:group-hover:visible">
+                  <a href="${job.jobUrl}" class="px-2 py-1 tablet:px-3 tablet:py-2 rounded-3xl bg-amber-11 text-slate-1 hover:bg-amber-10 duration-fast transition-all drop-shadow-sm tablet:text-[1rem] hover:ring-4 ring-slate-2 ring-opacity-80">
+                    Apply
+                  </a>
+                  <ion-icon name="eye-off-outline" class="seen-job-btn text-base hover:scale-125 duration-fast transition-all cursor-pointer" role="button"></ion-icon>
+                </div>
+              </div>
+            </div>
+          `;
+
+          this.uiManager.uiBinding.jobContainer.innerHTML =
+            HTML + this.uiManager.uiBinding.jobContainer.innerHTML;
+        } catch (error) {
+          console.error("Error rendering job:", error, job);
+        }
+      });
     } else {
       jobs.forEach((job) => {
         const [tag1, tag2, tag3, tag4] = job.tags;
@@ -893,7 +972,7 @@ class UIRendering {
       this.uiManager.uiBinding.safeQuerySelectorAll(".seen-job-btn");
     this.uiManager.uiBinding.seenJobBtn.forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevent job card click
+        e.stopPropagation();
         e.preventDefault();
         this.uiManager.app.jobManager.handleSeenJob(e);
       });
@@ -925,6 +1004,13 @@ class UIRendering {
       switch (category.key) {
         case "job_type":
           category.values.forEach((value) => {
+            if (
+              this.uiManager.app.filterManager.favoriteFilters.some(
+                (favFilter) => favFilter.value === value
+              )
+            )
+              return;
+
             const jobTypeHTML = `
                 <label
                     class="filter-btn inline-flex items-center gap-3 cursor-pointer group w-fit px-3 py-2 rounded-2xl hover:bg-amber-2 dark:hover:bg-slate-11 transition-all duration-fast"
@@ -932,6 +1018,7 @@ class UIRendering {
                     id="${this.uiManager.idManager("filter")}"
                     data-filtervalue="${value}"
                   >
+                  <ion-icon class="toggle-fav-filter-on text-sm hover:text-rose-950 hover:scale-110 duration-fast transition-all dark:hover:text-rose-100" name="heart-half-outline"></ion-icon>
                     <input
                       type="checkbox"
                       class="relative w-4 h-4 border-[0.2rem] rounded-xl appearance-none cursor-pointer border-amber-4 dark:border-slate-6 checked:bg-amber-9 dark:checked:bg-slate-6 checked:border-0 focus:ring-4 focus:ring-amber-3 dark:focus:ring-slate-7 focus:ring-opacity-70 focus:outline-none transition-all duration-fast checked:after:absolute checked:after:content-[''] checked:after:left-1/2 checked:after:top-1/2 checked:after:w-2 checked:after:h-3.5 checked:after:border-r-2 checked:after:border-b-2 checked:after:border-slate-1 checked:after:rotate-45 checked:after:translate-x-[-50%] checked:after:translate-y-[-70%]"
@@ -950,6 +1037,13 @@ class UIRendering {
 
         case "candidate_required_location":
           category.values.forEach((value) => {
+            if (
+              this.uiManager.app.filterManager.favoriteFilters.some(
+                (favFilter) => favFilter.value === value
+              )
+            )
+              return;
+
             if (counterOne <= 4) {
               const jobTypeHTML = `
                 <label
@@ -958,6 +1052,7 @@ class UIRendering {
                     id="${category.idCategory}"
                     data-filtervalue="${value}"
                   >
+                  <ion-icon class="toggle-fav-filter-on text-sm hover:text-rose-950 hover:scale-110 duration-fast transition-all dark:hover:text-rose-100" name="heart-half-outline"></ion-icon>
                     <input
                       type="checkbox"
                       class="relative w-4 h-4 border-[0.2rem] rounded-xl appearance-none cursor-pointer border-amber-4 dark:border-slate-6 checked:bg-amber-9 dark:checked:bg-slate-6 checked:border-0 focus:ring-4 focus:ring-amber-3 dark:focus:ring-slate-7 focus:ring-opacity-70 focus:outline-none transition-all duration-fast checked:after:absolute checked:after:content-[''] checked:after:left-1/2 checked:after:top-1/2 checked:after:w-2 checked:after:h-3.5 checked:after:border-r-2 checked:after:border-b-2 checked:after:border-slate-1 checked:after:rotate-45 checked:after:translate-x-[-50%] checked:after:translate-y-[-70%]"
@@ -977,6 +1072,15 @@ class UIRendering {
           break;
         case "company_name":
           category.values.forEach((value) => {
+            if (
+              this.uiManager.app.filterManager.favoriteFilters.some(
+                (favFilter) => favFilter.value === value
+              )
+            )
+              return;
+
+            if (value.split(" ").length === 2) return;
+
             if (counterTwo <= 4) {
               const jobTypeHTML = `
                 <label
@@ -985,6 +1089,7 @@ class UIRendering {
                     id="${category.idCategory}"
                     data-filtervalue="${value}"
                   >
+                  <ion-icon class="toggle-fav-filter-on text-sm hover:text-rose-950 hover:scale-110 duration-fast transition-all dark:hover:text-rose-100" name="heart-half-outline"></ion-icon>
                     <input
                       type="checkbox"
                       class="relative w-4 h-4 border-[0.2rem] rounded-xl appearance-none cursor-pointer border-amber-4 dark:border-slate-6 checked:bg-amber-9 dark:checked:bg-slate-6 checked:border-0 focus:ring-4 focus:ring-amber-3 dark:focus:ring-slate-7 focus:ring-opacity-70 focus:outline-none transition-all duration-fast checked:after:absolute checked:after:content-[''] checked:after:left-1/2 checked:after:top-1/2 checked:after:w-2 checked:after:h-3.5 checked:after:border-r-2 checked:after:border-b-2 checked:after:border-slate-1 checked:after:rotate-45 checked:after:translate-x-[-50%] checked:after:translate-y-[-70%]"
@@ -1004,6 +1109,15 @@ class UIRendering {
           break;
         case "tags":
           category.values.forEach((value) => {
+            if (
+              this.uiManager.app.filterManager.favoriteFilters.some(
+                (favFilter) => favFilter.value === value
+              )
+            )
+              return;
+
+            if (value.split(" ").length === 2) return;
+
             if (counterThree <= 4) {
               const jobTypeHTML = `
                 <label
@@ -1012,6 +1126,7 @@ class UIRendering {
                     id="${category.idCategory}"
                     data-filtervalue="${value}"
                   >
+                  <ion-icon class="toggle-fav-filter-on text-sm hover:text-rose-950 hover:scale-110 duration-fast transition-all dark:hover:text-rose-100" name="heart-half-outline"></ion-icon>
                     <input
                       type="checkbox"
                       class="relative w-4 h-4 border-[0.2rem] rounded-xl appearance-none cursor-pointer border-amber-4 dark:border-slate-6 checked:bg-amber-9 dark:checked:bg-slate-6 checked:border-0 focus:ring-4 focus:ring-amber-3 dark:focus:ring-slate-7 focus:ring-opacity-70 focus:outline-none transition-all duration-fast checked:after:absolute checked:after:content-[''] checked:after:left-1/2 checked:after:top-1/2 checked:after:w-2 checked:after:h-3.5 checked:after:border-r-2 checked:after:border-b-2 checked:after:border-slate-1 checked:after:rotate-45 checked:after:translate-x-[-50%] checked:after:translate-y-[-70%]"
@@ -1030,6 +1145,37 @@ class UIRendering {
           });
           break;
       }
+    });
+  }
+
+  renderFavFilters(favFilters) {
+    this.uiManager.uiBinding.favFiltersContainer.innerHTML = ""; // Clear existing content
+
+    favFilters.forEach((filter) => {
+      const HTML = `
+        <label
+          class="favorite-filter-btn inline-flex items-center gap-3 cursor-pointer group w-fit px-3 py-2 rounded-2xl hover:bg-amber-2 dark:hover:bg-slate-11 transition-all duration-fast"
+          data-filterkey="${filter.key}"
+          data-filtervalue="${filter.value}"
+          id="${filter.idFilter}"
+        >
+          <input
+            type="checkbox"
+            class="relative w-4 h-4 border-[0.2rem] rounded-xl appearance-none cursor-pointer border-amber-4 dark:border-slate-6 checked:bg-amber-9 dark:checked:bg-slate-6 checked:border-0 focus:ring-4 focus:ring-amber-3 dark:focus:ring-slate-7 focus:ring-opacity-70 focus:outline-none transition-all duration-fast checked:after:absolute checked:after:content-[''] checked:after:left-1/2 checked:after:top-1/2 checked:after:w-2 checked:after:h-3.5 checked:after:border-r-2 checked:after:border-b-2 checked:after:border-slate-1 checked:after:rotate-45 checked:after:translate-x-[-50%] checked:after:translate-y-[-70%]"
+            ${this.uiManager.app.filterManager.isActiveFilter(filter.key, filter.value) ? "checked" : ""}
+          />
+          <span
+            class="text-[1.2rem] font-serif3 text-amber-11 dark:text-slate-4 group-hover:text-amber-9 dark:group-hover:text-slate-6 transition-colors duration-fast select-none"
+          >
+            ${filter.value.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+          </span>
+          <ion-icon 
+            class="toggle-fav-filter-off text-sm text-rose-500 hover:scale-110 duration-fast transition-all" 
+            name="heart"
+            role="button"
+          ></ion-icon>
+        </label>`;
+      this.uiManager.uiBinding.favFiltersContainer.innerHTML += HTML;
     });
   }
 }
@@ -1071,10 +1217,14 @@ class UIBinding {
     this.jobContainer = this.safeQuerySelector("#jobs-container");
     this.loadingSkeltonJobs = this.safeQuerySelector("#loading-skelton-jobs");
     this.loadingSkeltonChips = this.safeQuerySelector("#loading-skelton-chips");
-    this.favFiltersContainer = this.safeQuerySelector(
-      "#favorite-filters-container"
+    this.filterPanelsSkeleton = this.safeQuerySelectorAll(
+      ".filter-loading-skelton "
     );
     this.seenJobBtn = this.safeQuerySelectorAll(".seen-job-btn");
+    this.seenJobPresent = this.safeQuerySelector("#seen-jobs-present");
+    this.seenJobPresentMobile = this.safeQuerySelector(
+      "#seen-jobs-present-mobile"
+    );
     this.favFiltersBtn = this.safeQuerySelectorAll(".favorite-filter-btn");
     this.sortingOptions = this.safeQuerySelector("#sorting-options");
     this.htmlEl = this.safeQuerySelector("html");
@@ -1099,6 +1249,25 @@ class UIBinding {
     this.jobCountAlert = this.safeQuerySelector("#job-count-alert");
     this.navbar = this.safeQuerySelector("nav");
     this.searchbarSection = this.safeQuerySelector("#searchbar-section");
+    // Add new favorite filters related bindings
+    this.favFilterToggleBtns = this.safeQuerySelectorAll(
+      ".toggle-fav-filter-on"
+    );
+    this.favFiltersContainer = this.safeQuerySelector(
+      "#favorite-filters-container"
+    );
+    // Add new bindings for panels
+    this.locationPanel = this.safeQuerySelector(
+      '[data-filterkey="candidate_required_location"]'
+    );
+    this.jobFormatPanel = this.safeQuerySelector('[data-filterkey="job_type"]');
+    this.companyPanel = this.safeQuerySelector(
+      '[data-filterkey="company_name"]'
+    );
+    // Add new binding for favorite filters panel
+    this.favoriteFiltersPanel = this.safeQuerySelector(
+      "#favorite-filters-panel"
+    );
   }
 
   safeQuerySelector(selector) {
@@ -1213,28 +1382,82 @@ class UIBinding {
     });
 
     this.filtersContainer.addEventListener("click", (e) => {
-      const filterPanel = e.target?.closest(".filter-panel");
-      const filterBtn = e.target?.closest(".filter-btn");
+      const heartIcon = e.target.closest(".toggle-fav-filter-on");
+      const filterBtn = e.target.closest(".filter-btn");
+      const filterPanel = e.target.closest(".filter-panel");
 
-      this.uiManager.app.handleSearchingEvent(
-        filterBtn,
-        "filter",
-        filterPanel?.dataset?.filterkey,
-        filterBtn?.dataset?.filtervalue,
-        filterBtn?.id,
-        filterBtn?.classList.contains("ACTIVE") ? true : false
-      );
+      // Only handle favorite filter toggle if heart icon is clicked
+      if (heartIcon || e.target.classList.contains("toggle-fav-filter-on")) {
+        e.stopPropagation();
+        e.preventDefault();
+        if (filterBtn && filterPanel) {
+          this.uiManager.app.filterManager.toggleFavoriteFilter(
+            filterBtn.id,
+            filterPanel.dataset.filterkey,
+            filterBtn.dataset.filtervalue
+          );
+        }
+        return;
+      }
+
+      // Handle search event for filter clicks
+      if (filterBtn) {
+        this.uiManager.app.handleSearchingEvent(
+          filterBtn,
+          "filter",
+          filterPanel?.dataset?.filterkey,
+          filterBtn?.dataset?.filtervalue,
+          filterBtn?.id,
+          filterBtn?.classList.contains("ACTIVE") ? true : false
+        );
+      }
     });
 
-    // this.favFiltersContainer.addEventListener("click", (e) => {
-    //   const favoriteFilterBtn = e.target.closest(".favorite-filter-btn");
+    this.favFiltersContainer.addEventListener("click", (e) => {
+      const removeIcon = e.target.closest(".toggle-fav-filter-off");
+      const filterBtn = e.target.closest(".favorite-filter-btn");
 
-    //   this.uiManager.app.filterManager.toggleFavoriteFilter(
-    //     favoriteFilterBtn?.dataset?.filterId,
-    //     favoriteFilterBtn?.dataset?.filterKey,
-    //     favoriteFilterBtn?.dataset?.filterValue
-    //   );
-    // });
+      // Handle favorite filter removal
+      if (removeIcon || e.target.classList.contains("toggle-fav-filter-off")) {
+        e.stopPropagation();
+        e.preventDefault();
+        const filterPanel = document.querySelector(
+          `.filter-panel[data-filterkey="${filterBtn.dataset.filterkey}"]`
+        );
+        const regularFilterBtn = filterPanel.querySelector(
+          `.filter-btn[data-filtervalue="${filterBtn.dataset.filtervalue}"]`
+        );
+
+        if (regularFilterBtn) {
+          const regularHeartIcon = regularFilterBtn.querySelector("ion-icon");
+          if (regularHeartIcon) {
+            regularHeartIcon.setAttribute("name", "heart-half-outline");
+          }
+        }
+
+        if (filterBtn) {
+          this.uiManager.app.filterManager.toggleFavoriteFilter(
+            filterBtn.id,
+            filterBtn.dataset.filterkey,
+            filterBtn.dataset.filtervalue
+          );
+        }
+        return;
+      }
+
+      // Handle search event for favorite filter clicks
+      if (filterBtn) {
+        const checkbox = filterBtn.querySelector('input[type="checkbox"]');
+        this.uiManager.app.handleSearchingEvent(
+          filterBtn,
+          "filter",
+          filterBtn.dataset.filterkey,
+          filterBtn.dataset.filtervalue,
+          filterBtn.id,
+          checkbox.checked
+        );
+      }
+    });
 
     this.dropdownNavbarToggle.addEventListener("click", () => {
       if (this.dropdownNavbarMenu.classList.contains("hidden")) {
@@ -1283,15 +1506,172 @@ class UIBinding {
       }
     });
 
-    this.seenJobBtn.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation(); // Prevent job card click
-        e.preventDefault();
-        this.uiManager.app.jobManager.handleSeenJob(e);
+    this.seenJobPresentMobile.addEventListener("click", (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      const seenJobs = this.uiManager.app.jobManager.seenJobs;
+      console.log("seenJobs:", seenJobs);
+      this.uiManager.app.uiManager.uiRendering.renderJobs(
+        seenJobs,
+        null,
+        null,
+        "seenJobs"
+      );
+      // Close sidebar if open;
+      if (!this.mobileMenuLinks.classList.contains("translate-x-[-50rem]")) {
+        this.mobileMenuLinks.classList.add("translate-x-[-50rem]");
+        this.mobileMenuToggle.checked = false;
+        this.uiManager.uiOverlay.removeOverlay();
+      }
+
+      // Scroll to content section accounting for navbar height
+      const contentSection = document.getElementById("content-section");
+      const navHeight = this.navbar.offsetHeight;
+      const contentOffset = contentSection.offsetTop - navHeight;
+      window.scrollTo({
+        top: contentOffset,
+        behavior: "smooth",
+      });
+    });
+
+    this.seenJobPresent.addEventListener("click", (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      const seenJobs = this.uiManager.app.jobManager.seenJobs;
+      this.uiManager.app.uiManager.uiRendering.renderJobs(
+        seenJobs,
+        null,
+        null,
+        "seenJobs"
+      );
+
+      // Scroll to content section accounting for navbar height
+      const contentSection = document.getElementById("content-section");
+      const navHeight = this.navbar.offsetHeight;
+      const contentOffset = contentSection.offsetTop - navHeight;
+      window.scrollTo({
+        top: contentOffset,
+        behavior: "smooth",
       });
     });
 
     this.observeNavbar();
+
+    // Add event listeners for both desktop and mobile dropdown menus
+    ["#dropdown-menu-navbar", "#dropdown-menu-navbar-mobile"].forEach(
+      (menuId) => {
+        const menu = this.safeQuerySelector(menuId);
+        if (menu) {
+          menu.addEventListener("click", (e) => {
+            const button = e.target.closest("button");
+            if (!button) return;
+
+            const buttonText = button.textContent.trim().toLowerCase();
+            this.handleDropdownNavigation(buttonText);
+
+            // Close the dropdown after clicking
+            if (menuId === "#dropdown-menu-navbar") {
+              this.dropdownNavbarMenu.classList.add("hidden");
+              this.uiManager.uiOverlay.removeOverlay();
+            }
+
+            // Close the mobile dropdown after clicking
+            if (menuId === "#dropdown-menu-navbar-mobile") {
+              // Close the mobile sidebar if it's open
+              if (
+                !this.mobileMenuLinks.classList.contains("translate-x-[-50rem]")
+              ) {
+                this.mobileMenuLinks.classList.add("translate-x-[-50rem]");
+                this.mobileMenuToggle.checked = false;
+                this.uiManager.uiOverlay.removeOverlay();
+              }
+            }
+          });
+        }
+      }
+    );
+
+    // Add event listeners for favorite filters buttons
+    const favFilterButtons = [
+      ...this.safeQuerySelectorAll(
+        'button:has(ion-icon[name="heart-outline"])'
+      ),
+      ...this.safeQuerySelectorAll(
+        'button:has(ion-icon[name="heart-half-sharp"])'
+      ),
+    ];
+
+    favFilterButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.scrollToElement(this.favoriteFiltersPanel);
+        this.highlightPanel(this.favoriteFiltersPanel);
+
+        // Close mobile menu if open
+        if (!this.mobileMenuLinks.classList.contains("translate-x-[-50rem]")) {
+          this.mobileMenuLinks.classList.add("translate-x-[-50rem]");
+          this.mobileMenuToggle.checked = false;
+          this.uiManager.uiOverlay.removeOverlay();
+        }
+      });
+    });
+  }
+
+  handleDropdownNavigation(buttonText) {
+    switch (buttonText) {
+      case "category":
+        this.scrollToElement(this.chipsContainer);
+        break;
+      case "location":
+        this.scrollToElement(this.locationPanel);
+        this.highlightPanel(this.locationPanel);
+        break;
+      case "job format":
+        this.scrollToElement(this.jobFormatPanel);
+        this.highlightPanel(this.jobFormatPanel);
+        break;
+      case "company":
+        this.scrollToElement(this.companyPanel);
+        this.highlightPanel(this.companyPanel);
+        break;
+    }
+  }
+
+  scrollToElement(element) {
+    if (!element) return;
+
+    // Calculate offset considering the navbar height
+    const navbarHeight = this.navbar.offsetHeight;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition =
+      elementPosition + window.pageYOffset - navbarHeight - 20;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  }
+
+  highlightPanel(panel) {
+    if (!panel) return;
+
+    // Add highlight ring
+    panel.classList.add(
+      "ring-8",
+      "ring-green-200",
+      "dark:ring-green-900",
+      "ring-opacity-50"
+    );
+
+    // Remove highlight after 3 seconds
+    setTimeout(() => {
+      panel.classList.remove(
+        "ring-8",
+        "ring-green-200",
+        "dark:ring-green-900",
+        "ring-opacity-50"
+      );
+    }, 3000);
   }
 
   isJobCountValid(jobCount) {
@@ -1503,11 +1883,17 @@ class UILoading {
   showLoadingInit() {
     this.uiManager.uiBinding.loadingSkeltonJobs.classList.remove("hidden");
     this.uiManager.uiBinding.loadingSkeltonChips.classList.remove("hidden");
+    this.uiManager.uiBinding.filterPanelsSkeleton.forEach((filterPanel) =>
+      filterPanel.classList.remove("hidden")
+    );
   }
 
   hideLoadingInit() {
     this.uiManager.uiBinding.loadingSkeltonJobs.classList.add("hidden");
     this.uiManager.uiBinding.loadingSkeltonChips.classList.add("hidden");
+    this.uiManager.uiBinding.filterPanelsSkeleton.forEach((filterPanel) =>
+      filterPanel.classList.add("hidden")
+    );
   }
 
   loadingManagerInit(promise) {
@@ -1651,6 +2037,7 @@ class JobManager {
         )
     );
 
+    console.log("Loaded Seen Jobs:", this.seenJobs);
     return this.seenJobs;
   }
 
@@ -1690,19 +2077,27 @@ class JobManager {
     const jobCard = event.target.closest(".job");
     const jobId = jobCard.id;
     console.log("Job ID:", jobId);
-    console.log("Job Card:", jobCard);
 
-    let job = this.jobsDisplayed.find((job) => job.idJob === Number(jobId));
+    let job =
+      this.jobsDisplayed.find((job) => job.idJob === Number(jobId)) ||
+      this.jobsRandom.find((job) => job.idJob === Number(jobId)) ||
+      this.seenJobs.find((job) => job.idJob === Number(jobId));
 
-    !job
-      ? (job = this.jobsRandom.find((job) => job.idJob === Number(jobId)))
-      : null;
+    if (!job) {
+      console.log("Job not found");
+      return;
+    }
 
     this.toggleJobSeen(job, event.target);
 
-    jobCard.classList.add("seen-job");
+    // Only add the seen-job class if the job is actually seen
+    if (job.isSeen) {
+      jobCard.classList.add("seen-job");
+    } else {
+      jobCard.classList.remove("seen-job");
+    }
 
-    this.saveSeenJob(jobId);
+    this.saveSeenJob();
   }
 
   removeActiveFiltersJobs(filterKey, filterValue) {
@@ -2034,6 +2429,7 @@ class FilterManager {
       (filterData) =>
         new Filter(this, filterData.idFilter, filterData.key, filterData.value)
     );
+    console.log("Loaded Favorite Filters:", this.favoriteFilters);
 
     return this.favoriteFilters;
   }
@@ -2049,24 +2445,50 @@ class FilterManager {
       "favoriteFilters",
       JSON.stringify(uniqueFavoriteFilters.map((filter) => filter.getFilter))
     );
+    console.log("Saved Favorite Filters:", this.favoriteFilters);
   }
 
   toggleFavoriteFilter(filterId, filterKey, filterValue) {
     const filter = new Filter(this, filterId, filterKey, filterValue);
     const filterIndex = this.favoriteFilters.findIndex(
-      (f) => f.idFilter === filter.idFilter
+      (f) => f.value === filter.value && f.key === filter.key
     );
 
-    filterIndex === -1
-      ? this.favoriteFilters.push(filter)
-      : this.favoriteFilters.splice(filterIndex, 1);
+    if (filterIndex === -1) {
+      this.favoriteFilters.push(filter);
+      // Update heart icon in filter button
+      const filterBtn = document.querySelector(`[id="${filterId}"]`);
+      if (filterBtn) {
+        const heartIcon = filterBtn.querySelector("ion-icon");
+        if (heartIcon) {
+          heartIcon.setAttribute("name", "heart");
+        }
+      }
+    } else {
+      this.favoriteFilters.splice(filterIndex, 1);
+      // Update heart icon in filter button and restore original half-heart
+      const filterBtn = document.querySelector(`[id="${filterId}"]`);
+      if (filterBtn) {
+        const heartIcon = filterBtn.querySelector("ion-icon");
+        if (heartIcon) {
+          heartIcon.setAttribute("name", "heart-half-outline");
+        }
+      }
 
-    this.app.uiManager.favoriteFiltersUI(
-      filter,
-      filterIndex === -1 ? "add" : "remove"
-    );
+      // Also update the regular filter's heart icon if it exists
+      const regularFilter = document.querySelector(
+        `.filter-btn[data-filterkey="${filterKey}"][data-filtervalue="${filterValue}"]`
+      );
+      if (regularFilter) {
+        const regularHeartIcon = regularFilter.querySelector("ion-icon");
+        if (regularHeartIcon) {
+          regularHeartIcon.setAttribute("name", "heart-half-outline");
+        }
+      }
+    }
 
     this.saveFavFilters();
+    this.app.uiManager.favoriteFiltersUI();
   }
 
   filterJobsByValue(jobs, filterKey, filterValue) {
@@ -2100,6 +2522,7 @@ class FilterManager {
         return newFilter;
       }
     }
+    console.log("Active Filters:", this.activeFilters);
   }
 
   findMatchingFilter(searchTerm) {
@@ -2132,7 +2555,6 @@ class FilterManager {
   }
 
   isActiveFilter(filterKey, filterValue) {
-    console.log("Active Filters:", this.activeFilters);
     return this.activeFilters.some(
       (filter) => filter.key === filterKey && filter.value === filterValue
     );
@@ -2181,8 +2603,6 @@ async function setupApp() {
       defaultQuery.filterValue,
       defaultQuery.limit
     );
-
-    // console.log("Testing Jobs:", jobs);
   } catch (error) {
     console.error("Error during app setup:", error);
   }
