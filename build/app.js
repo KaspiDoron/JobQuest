@@ -4,10 +4,10 @@
 
 class App {
   constructor() {
-    this.uiManager = new UIManager(this);
     this.jobManager = new JobManager(this);
-    this.categoryManager = new CategoryManager(this);
     this.filterManager = new FilterManager(this);
+    this.uiManager = new UIManager(this);
+    this.categoryManager = new CategoryManager(this);
     this.errorMessages = {
       // Job-related errors
       fetchingJobs: {
@@ -515,7 +515,6 @@ class UIManager {
     }
   }
 
-  // Display success message method
   displaySuccess(successConfig) {
     switch (successConfig.type) {
       case "searchBar":
@@ -1944,7 +1943,7 @@ class JobManager {
     this.jobsRandom = [];
   }
 
-  async fetchJobs(source, filterKey, filterValue, limit = 5) {
+  async fetchJobs(source, filterKey, filterValue, limit = 15) {
     try {
       const apiUrl = this.createApiUrl(filterKey, filterValue);
 
